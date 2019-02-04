@@ -30,6 +30,7 @@
                 <div class="card-header">&nbsp;</div>
                 <div class="card-body">
                     <h4><a href="{{url('/customers')}}">Customer Administration</a></h4>
+                    <p>Add/Edit/Delete Customers</p>
                 </div>
             </div>
         </div>
@@ -38,6 +39,7 @@
                 <div class="card-header">&nbsp;</div>
                 <div class="card-body">
                     <h4><a href="{{url('/notary-registration')}}">Notary Administration</a></h4>
+                    <p>Search/Add/Edit/Delete Notaries</p>
                 </div>
             </div>
         </div>
@@ -46,6 +48,7 @@
                 <div class="card-header">&nbsp;</div>
                 <div class="card-body">
                     <h4><a href="{{url('/jobs')}}">Active Job Administration</a></h4>
+                    <p>Search/Add/Edit/Delete Jobs</p>
                 </div>
             </div>
         </div>
@@ -54,6 +57,7 @@
                 <div class="card-header">&nbsp;</div>
                 <div class="card-body">
                     <h4><a href="{{url('/invoices')}}">Invoicing Center</a></h4>
+                    <p>Search/Add/Edit/Delete Invoices</p>
                 </div>
             </div>
         </div>
