@@ -22,7 +22,6 @@ Route::get('contact', 'PublicController@getpage');
 //
 Route::group(array('middleware'=> 'auth'), function (){
     Route::get('dashboard', ['as'=>'dashboard.index','uses'=>'HomeController@index']);
-    Route::resource('notaries', 'NotaryController');
     Route::resource('jobs', 'JobController');
     Route::resource('invoices', 'InvoiceController');
 

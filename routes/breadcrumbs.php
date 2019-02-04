@@ -30,3 +30,30 @@ Breadcrumbs::register('customers.edit', function($breadcrumbs, $customer)
     $breadcrumbs->parent('customers.show', $customer);
     $breadcrumbs->push('Edit customer', route('customers.edit', $customer->id));
 });
+// customers
+Breadcrumbs::register('notaries.index', function($breadcrumbs)
+{
+    $breadcrumbs->parent('dashboard.index');
+    $breadcrumbs->push('notaries', route('notaries.index'));
+});
+
+// notaries > Add notaries
+Breadcrumbs::register('notaries.create', function($breadcrumbs)
+{
+    $breadcrumbs->parent('notaries.index');
+    $breadcrumbs->push('Add notary', route('notaries.create'));
+});
+
+// notaries > [notaries Name]
+Breadcrumbs::register('notaries.show', function($breadcrumbs, $notary)
+{
+    $breadcrumbs->parent('notaries.index');
+    $breadcrumbs->push($notary->company, route('notaries.show', $notary->id));
+});
+
+// notaries > [notaries Name] > Edit notaries
+Breadcrumbs::register('notaries.edit', function($breadcrumbs, $notary)
+{
+    $breadcrumbs->parent('notaries.show', $notary);
+    $breadcrumbs->push('Edit notary', route('notaries.edit', $notary->id));
+});
