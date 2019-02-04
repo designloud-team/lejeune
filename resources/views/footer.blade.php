@@ -32,7 +32,7 @@
                                     <div class="fl-rich-text">
                                         <p style="text-align: center;width:65%;padding:0 6%;margin: 0 auto;"><small>This website and all materials and information included herein is/are the exclusive property of Lejeune Notaries. Use of this site shall not waive any of Lejeune Notaries' rights to exclusive ownership. You may not reproduce any materials or information listed or linked on this site without prior written consent of Lejeune Notaries. Sponsored Links are independent companies who have purchased ad space on our site. We are not affiliated with these companies in any way, nor are we responsible for any of their site content. All independent logos and/or trademarks remain the property of their respective owners.</small></p>
                                     </div>
-                                    <p class="text-center">This site was custom designed by <a href="//designloud.com">DesignLoud</a> | @if(Auth::check())<a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                                    <p class="text-center">This site was custom designed by <a href="//designloud.com">DesignLoud</a> | @if(Auth::check())<a href="/dashboard">Admin Dashboard</a> | <a href="{{ url('/logout') }}" onclick="event.preventDefault();
                              document.getElementById('logout-form1').submit();">Logout</a><form id="logout-form1" action="{{ url('/logout') }}" method="POST"
                                                                                                 style="display: none;">{{ csrf_field() }}</form>@else<a href="{{url('/login')}}">Admin Login</a>@endif</p>
                                 </div>
