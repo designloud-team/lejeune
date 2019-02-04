@@ -38,24 +38,24 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::get( '/downloadExcel/{type}', ['as'=>'customers.downloadExcel', 'uses'=>'CustomerController@downloadExcel'] );
         Route::post( '/importExcel', ['as'=>'customers.importExcel', 'uses'=>'CustomerController@importExcel'] );
         Route::group( ['prefix' => 'datatables'], function() {
-            Route::get( '/data/{id}/{type}', ['as'=>'customers.data', 'uses'=>'CustomerController@getCustomerJsonData'] );
+            Route::get( '/data/{id}/{type}', ['as'=>'customers.data', 'uses'=>'CustomerController@index'] );
         });
     });
 
     Route::group( ['prefix' => 'notaries'], function() {
-            Route::get( '/', ['as'=>'notaries.index', 'uses'=>'CustomerController@index'] );
-            Route::get( '/create', ['as'=>'notaries.create', 'uses'=>'CustomerController@create'] );
-            Route::post( '/create', ['as'=>'notaries.store', 'uses'=>'CustomerController@store'] );
-            Route::get( '/{id}', ['as'=>'notaries.show', 'uses'=>'CustomerController@show'] );
-            Route::get( '/{id}/edit', ['as'=>'notaries.edit', 'uses'=>'CustomerController@edit'] );
-            Route::patch( '/{id}', ['as'=>'notaries.update', 'uses'=>'CustomerController@update'] );
-            Route::delete( '/{id}', ['as'=>'notaries.destroy', 'uses'=>'CustomerController@destroy'] );
-//        Route::post( '/update-tags', ['as'=>'notaries.update-tags', 'uses'=>'CustomerController@updateTags'] );
-            Route::post( '/destroy-all', ['as'=>'notaries.destroy-all', 'uses'=>'CustomerController@destroyAll'] );
-            Route::get( '/downloadExcel/{type}', ['as'=>'notaries.downloadExcel', 'uses'=>'CustomerController@downloadExcel'] );
-            Route::post( '/importExcel', ['as'=>'notaries.importExcel', 'uses'=>'CustomerController@importExcel'] );
+            Route::get( '/', ['as'=>'notaries.index', 'uses'=>'NotaryController@index'] );
+            Route::get( '/create', ['as'=>'notaries.create', 'uses'=>'NotaryController@create'] );
+            Route::post( '/create', ['as'=>'notaries.store', 'uses'=>'NotaryController@store'] );
+            Route::get( '/{id}', ['as'=>'notaries.show', 'uses'=>'NotaryController@show'] );
+            Route::get( '/{id}/edit', ['as'=>'notaries.edit', 'uses'=>'NotaryController@edit'] );
+            Route::patch( '/{id}', ['as'=>'notaries.update', 'uses'=>'NotaryController@update'] );
+            Route::delete( '/{id}', ['as'=>'notaries.destroy', 'uses'=>'NotaryController@destroy'] );
+//        Route::post( '/update-tags', ['as'=>'notaries.update-tags', 'uses'=>'NotaryController@updateTags'] );
+            Route::post( '/destroy-all', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@destroyAll'] );
+            Route::get( '/downloadExcel/{type}', ['as'=>'notaries.downloadExcel', 'uses'=>'NotaryController@downloadExcel'] );
+            Route::post( '/importExcel', ['as'=>'notaries.importExcel', 'uses'=>'NotaryController@importExcel'] );
             Route::group( ['prefix' => 'datatables'], function() {
-                Route::get( '/data/{id}/{type}', ['as'=>'notaries.data', 'uses'=>'CustomerController@getCustomerJsonData'] );
+                Route::get( '/data/{id}/{type}', ['as'=>'notaries.data', 'uses'=>'NotaryController@getCustomerJsonData'] );
             });
     });
 
