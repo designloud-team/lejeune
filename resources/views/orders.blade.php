@@ -28,14 +28,14 @@
         height: 100%;
         margin:2% auto;
         background:#fff;
-        border-left: 5px solid #821a1a;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        /*border-left: 3px solid #821a1a;*/
-        -webkit-box-shadow: 5px 12px 18px -6px rgba(0,0,0,0.3)!important;
-        -moz-box-shadow:  5px 12px 18px -6px rgba(0,0,0,0.3)!important;
-        box-shadow: 5px 12px 18px -6px rgba(0,0,0,0.3)!important;
+        /*border-left: 5px solid #821a1a;*/
+        /*-webkit-border-radius: 5px;*/
+        /*-moz-border-radius: 5px;*/
+        /*border-radius: 5px;*/
+        /*!*border-left: 3px solid #821a1a;*!*/
+        /*-webkit-box-shadow: 5px 12px 18px -6px rgba(0,0,0,0.3)!important;*/
+        /*-moz-box-shadow:  5px 12px 18px -6px rgba(0,0,0,0.3)!important;*/
+        /*box-shadow: 5px 12px 18px -6px rgba(0,0,0,0.3)!important;*/
     }
 </style>
 @section('content')
