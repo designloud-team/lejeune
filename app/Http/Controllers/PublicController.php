@@ -16,7 +16,7 @@ class PublicController extends Controller
                 return view('orders');
             case 'services':
                 return view('services');
-            case 'notaries':
+            case 'notary-registration':
                 return view('notaries');
             case 'contact':
                 return view('contact');

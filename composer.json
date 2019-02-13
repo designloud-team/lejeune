@@ -12,6 +12,7 @@
         "barryvdh/laravel-dompdf": "^0.8.3",
         "davejamesmiller/laravel-breadcrumbs": "^5.2",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
@@ -39,6 +40,7 @@
         }
     },
     "autoload": {
+        "files": ["app/Http/Helpers.php"],
         "psr-4": {
             "App\\": "app/"
         },

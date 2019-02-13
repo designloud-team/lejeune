@@ -32,15 +32,17 @@
                                                                         <div class="col-md-6">
                                                                             {!! Form::email('email',null,['class'=> 'form-control']) !!}
                                                                         </div>
-                                                                        </div>
+
                                                                         <div class="col-md-2">
                                                                             {!! Form::submit('Search',['class'=> 'btn btn-link']) !!}
                                                                         </div>
-                                                                        <div id="step-2">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div id="step-2">
 
                                                                         </div>
-                                                                        {!! Form::close() !!}
-                                                                </div>
+                                                                 {!! Form::close() !!}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -48,8 +50,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </article>
-
                 </div>
             </div>
         </div>
