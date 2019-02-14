@@ -61,7 +61,7 @@
                                                                     <p>Please use the form below to submit your request for our mobile notary services and/or recieve a FREE quote. All fields marked with an asterisk (*) are required.</p>
                                                                     <p><span style="font-size: 14px; color: #821a1a;">IMPORTANT NOTE: If you need a notary within the next 24 hours or less, please DO NOT use the online form below; call us at&nbsp;<a href="tel:7036265911"><u>703.626.5911</u></a></span></p>
                                                                 </div>
-                                                                {!! Form::open(['action' => 'OrderController@store', 'id'=> 'order-form']) !!}
+                                                                {!! Form::open(['action' => 'OrderController@store', 'id'=> 'order-form', 'class' => 'dash']) !!}
                                                                         <div class="form-group">
                                                                             {!! Form::label('type', 'Request Type:', ['class' => 'control-label underline'])  !!}
                                                                             <br><label>{!! Form::radio('type','quote',['class' => 'form-control radio']); !!} <span>FREE Quote</span></label>

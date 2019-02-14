@@ -21,21 +21,23 @@
                                                                     <h1>Notary Registration</h1>
                                                                     <p>We work with companies all across the United States. If you provide Notary Services in any of the 50 states, please use the form below to add your business to our online database or update your existing information.</p>
                                                                     <p><strong>All fields marked with an asterisk (*) are Required</strong></p>
-                                                                    {!! Form::open() !!}
+                                                                    {!! Form::open([
+                                                                    'id'=>'notary-registration-form',
+                                                                    ]) !!}
                                                                     <div id="step-1">
                                                                         <p><span style="text-decoration: underline">Step 1: Check to see if you are already listed in our database</span> </p>
                                                                        <br>
                                                                         <div class="form-group">
-                                                                        <div class="col-md-1">
-                                                                            {!! Form::label('email','Email:',['class'=> 'control-label']) !!}
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            {!! Form::email('email',null,['class'=> 'form-control']) !!}
-                                                                        </div>
+                                                                            <div class="col-md-1 ">
+                                                                                {!! Form::label('email','Email:',['class'=> 'control-label']) !!}
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                {!! Form::email('email',null,['class'=> 'form-control', 'id'=>'email']) !!}
+                                                                            </div>
 
-                                                                        <div class="col-md-2">
-                                                                            {!! Form::submit('Search',['class'=> 'btn btn-link']) !!}
-                                                                        </div>
+                                                                            <div class="col-md-2">
+                                                                                {!! Form::button('Search',['class'=> 'btn btn-link', 'search']) !!}
+                                                                            </div>
                                                                         </div>
                                                                     </div>
 
@@ -59,4 +61,15 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        // $(function () {
+            $('#search').click(function (e) {
+                e.preventDefault()
+                e.stopImmediatePropagation()
+                alert($('#email').val())
+            })
+        // })
+    </script>
 @endsection
+

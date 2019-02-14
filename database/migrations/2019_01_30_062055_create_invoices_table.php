@@ -23,7 +23,7 @@ class CreateInvoicesTable extends Migration
             $table->date('due_date')->nullable();
             $table->date('date_paid')->nullable();
             $table->string('status')->nullable();
-            $table->boolean('billed')->nullable();
+            $table->boolean('billed')->nullable()->default(0);
             $table->date('date_billed')->nullable();
             $table->integer('notary_id')->unsigned()->index()->nullable();
             $table->integer('customer_id')->unsigned()->index()->nullable();

@@ -11,6 +11,15 @@ class JobController extends Controller
     {
         $this->middleware('auth');
     }
+    public function getDashboard()
+    {
+
+        return view('jobs.dashboard', [
+            'page_title' => 'Jobs Administration',
+            'page_description' => 'All Jobs'
+        ]);
+
+    }
     /**
      * Display a listing of the resource.
      *

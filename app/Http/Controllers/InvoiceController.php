@@ -11,6 +11,15 @@ class InvoiceController extends Controller
     {
         $this->middleware('auth');
     }
+    public function getDashboard()
+    {
+
+        return view('invoices.dashboard', [
+            'page_title' => 'Invoices Administration',
+            'page_description' => 'All Invoices'
+        ]);
+
+    }
     /**
      * Display a listing of the resource.
      *

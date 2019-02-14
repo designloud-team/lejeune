@@ -77,33 +77,36 @@
             </div>
         </div>
     </div>
+
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="all">
+            <div role="tabpanel" class="tab-pane active">
                 <div class="box box-default">
                     <div class="box-body">
-                        {{--<div class="col-md-2 row" style="margin-bottom: 15px;">--}}
-                            {{--<label for="" class="control-label">View</label>--}}
-                            {{--<select name="display" id="display" class="form-control">--}}
-                                {{--<option value="" disabled>Select records to display</option>--}}
-                                {{--@if(Auth::user()->can('view-others-line-customers'))--}}
-                                    {{--<option value="all" selected>View all</option>--}}
-                                    {{--<option value="mine">view mine</option>--}}
-                                {{--@else--}}
-                                    {{--<option value="mine" selected>view mine</option>--}}
-                                {{--@endif--}}
-                            {{--</select>--}}
-                        {{--</div>--}}
+                        <div class="col-md-2 margin-bottom-5">
+                            <div class="row">
+                                <div class="col-xs-10">
+                                    <select name="actions" id="actions" class="form-control">
+                                        <option selected disabled>Actions</option>
+                                        <option value="edit">Edit all</option>
+                                        <option value="delete">Delete all</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-2">
+                                    <button type="button" class="pull-left btn btn-primary" id="btn-apply">Apply</button>
+                                </div>
+                            </div>
+                        </div>
                     <div class="responsive-tables">
                         <table class="table table-bordered display responsive tbl-customers" width="100%">
                             <thead>
                             <tr>
+                                <th></th>
                                 <th>Name</th>
-                                <th>Display name</th>
+                                <th>Display Name</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                     </div><!-- /.box-body -->

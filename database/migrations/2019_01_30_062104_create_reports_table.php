@@ -15,7 +15,7 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('is_completed');
+            $table->boolean('is_completed')->default(0);
             $table->string('tracking')->nullable();
             $table->string('carrier')->nullable();
             $table->string('completion_date')->nullable();

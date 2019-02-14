@@ -22,6 +22,13 @@ Route::get('contact', 'PublicController@getpage');
 //
 Route::group(array('middleware'=> 'auth'), function (){
     Route::get('dashboard', ['as'=>'dashboard.index','uses'=>'HomeController@index']);
+
+    Route::get('customers-dashboard', ['as'=>'dashboard.index','uses'=>'CustomerController@getDashboard']);
+    Route::get('notaries-dashboard', ['as'=>'dashboard.index','uses'=>'NotaryController@getDashboard']);
+    Route::get('jobs-dashboard', ['as'=>'dashboard.index','uses'=>'JobController@getDashboard']);
+    Route::get('invoices-dashboard', ['as'=>'dashboard.index','uses'=>'InvoiceController@getDashboard']);
+
+
     Route::resource('jobs', 'JobController');
     Route::resource('invoices', 'InvoiceController');
 
@@ -37,9 +44,7 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::post( '/destroy-all', ['as'=>'customers.destroy-all', 'uses'=>'CustomerController@destroyAll'] );
         Route::get( '/downloadExcel/{type}', ['as'=>'customers.downloadExcel', 'uses'=>'CustomerController@downloadExcel'] );
         Route::post( '/importExcel', ['as'=>'customers.importExcel', 'uses'=>'CustomerController@importExcel'] );
-        Route::group( ['prefix' => 'datatables'], function() {
-            Route::get( '/data/{id}/{type}', ['as'=>'customers.data', 'uses'=>'CustomerController@index'] );
-        });
+        Route::get( '/data/{id}/{type}', ['as'=>'customers.data', 'uses'=>'CustomerController@getDatatablesData'] );
     });
 
     Route::group( ['prefix' => 'notaries'], function() {

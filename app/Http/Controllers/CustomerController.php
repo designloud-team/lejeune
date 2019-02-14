@@ -3,31 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Repositories\CustomerRepository;
 use Auth;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class CustomerController extends Controller
 {
-    public function __construct()
+    public function __construct(CustomerRepository $customer)
     {
         $this->middleware('auth');
+        $this->customer = $customer;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function getDashboard()
+    {
+
+        return view('customers.dashboard', [
+            'page_title' => 'Customers Administration',
+            'page_description' => 'All Customers'
+        ]);
+
+    }
+
+
     public function index()
     {
 
         if (request()->wantsJson()) {
+//            return \GuzzleHttp\json_encode($this->getDatatablesData()->getData());
 
-            return \GuzzleHttp\json_encode($this->forUserDatatables()->getData());
+            return response()->json($this->getDatatablesData()->getData());
         }
         return view('customers.index', [
             'page_title' => 'Customers',
             'page_description' => 'All Customers',
+            'customers' => Customer::all()
         ]);
 
     }
@@ -40,6 +57,10 @@ class CustomerController extends Controller
     public function create()
     {
         //
+        return view('customers.create' , [
+            'page_title' => 'Customers',
+            'page_description' => 'New Customers',
+        ]);
     }
 
     /**
@@ -51,6 +72,13 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+
+        dd($data);
+        $customer = Customer::create($data);
+
+        return view('customers.show', compact('customer'));
+
     }
 
     /**
@@ -59,9 +87,12 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show($id)
     {
         //
+        $customer = Customer::find($id);
+
+        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -70,9 +101,12 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
         //
+        $customer = Customer::find($id);
+
+        return view('customers.edit', compact('customer'));
     }
 
     /**
@@ -82,9 +116,17 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $id)
     {
         //
+        $customer = Customer::find($id);
+        $data = $request->all();
+
+        dd($data);
+        $customer->update($data);
+
+        return view('customers.show', compact('customer'));
+
     }
 
     /**
@@ -93,38 +135,26 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
         //
+        $customer = Customer::find($id);
+
+        $status = $customer->delete();
+
+        return $status == 1? true : false;
+
     }
-    protected function forUserDatatables()
+    protected function getDatatablesData()
     {
 
-//        $query = Customer::where('user_id', '=', Auth::user()->id);
         $query = Customer::all();
 
-//        if (request()->has('name')) {
-//            $query->where('first_name', 'like', request('name'))->orWhere('organization', 'like', request('name'))->orWhere('last_name', 'like', request('name'));
-//        }
-
         return Datatables::of($query)
-            ->addColumn('name', function ($customer) {
-                return $customer->company ? $customer->company: $customer->name ;
-
-            })
-            ->addColumn('display_name', function ($customer) {
-                return $customer->display_name ? $customer->display_name: ' ' ;
-
-            })
             ->addColumn('actions', function ($customer) {
                 return (string) view('customers.partials.actions', compact('customer'));
             })
             ->rawColumns(['actions'])
             ->make(true);
-    }
-
-    public function getCustomerJsonData()
-    {
-        
     }
 }

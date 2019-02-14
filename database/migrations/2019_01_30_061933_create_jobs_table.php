@@ -21,7 +21,7 @@ class CreateJobsTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('email')->nullable();
             $table->string('display_name')->nullable();
-            $table->boolean('use_display_name');
+            $table->boolean('use_display_name')->default(0);
             $table->string('website')->nullable();
             $table->text('billing_address');
             $table->text('shipping_address');
@@ -32,7 +32,7 @@ class CreateJobsTable extends Migration
 
         Schema::create('notaries', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('local');
+            $table->boolean('local')->default(0);
             $table->string('state');
             $table->string('first_name');
             $table->string('last_name');
@@ -43,8 +43,8 @@ class CreateJobsTable extends Migration
             $table->string('phone');
             $table->string('alternate_phone')->nullable();
             $table->string('fax')->nullable();
-            $table->boolean('e_docs');
-            $table->boolean('insurance');
+            $table->boolean('e_docs')->default(0);
+            $table->boolean('insurance')->default(0);
             $table->string('insurance_amount')->nullable();
             $table->string('ssn_or_ein')->nullable();
             $table->text('notes')->nullable();
@@ -64,7 +64,7 @@ class CreateJobsTable extends Migration
            $table->date('date');
            $table->time('time');
            $table->unsignedSmallInteger('packages');
-           $table->boolean('local');
+           $table->boolean('local')->default(0);
            $table->string('notary_fee');
            $table->integer('customer_id')->unsigned()->index()->nullable();
            $table->integer('notary_id')->unsigned()->index()->nullable();

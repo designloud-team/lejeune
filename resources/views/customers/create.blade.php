@@ -8,54 +8,71 @@
     <div class="row">
             <!-- Display Validation Errors -->
             @include('common.errors')
-
-            {!! Form::open([
-                'route' => 'customers.store'
-            ]) !!}
-
-            <div class="col-sm-12">
+        <h3 class="page-header">Add new customer details</h3>
+            <div class="col-sm-12 fieldset">
+                {!! Form::open([
+                  'route' => 'customers.store'
+                    ]) !!}
                 <div class="box box-default">
-                    <div class="box-header">
-                      <h3 class="box-title">Details</h3>
-                    </div>
+                    {{--<div class="box-header">--}}
+                      {{--<h3 class="box-title">Customer Details</h3>--}}
+                    {{--</div>--}}
                     <!-- /.box-header -->
                     <div class="box-body pad">
-                        <div class="form-group">
-                            {!! Form::label('item', 'Item: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('item', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                        <div class="form-group col-md-6">
+                            {!! Form::label('company', 'Company:', ['class' => 'control-label']) !!}
+                            {!! Form::text('company', null, ['class' => 'form-control']) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('description', 'Description: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('description', null, ['class' => 'form-control',  'required' => 'required']) !!}
+                        <div class="form-group col-md-6">
+                            {!! Form::label('name', 'Name:', ['class' => 'control-label']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('amount', 'Amount: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('amount', '0.00', ['class' => 'form-control', 'required' => 'required']) !!}
+                        <div class="form-group col-md-6">
+                            {!! Form::label('phone_number', 'Phone number: *', ['class' => 'control-label']) !!}
+                            {!! Form::text('phone_number', null, ['class' => 'form-control']) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('quantity', 'Quantity: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('quantity', '1.0', ['class' => 'form-control', 'required' => 'required']) !!}
+                        <div class="form-group col-md-6">
+                            {!! Form::label('mobile', 'Mobile:', ['class' => 'control-label']) !!}
+                            {!! Form::text('mobile', null, ['class' => 'form-control']) !!}
                         </div>
-
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
+                            {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
+                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {!! Form::label('website', 'Website:', ['class' => 'control-label']) !!}
+                            {!! Form::text('website', null, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {!! Form::label('display_name', 'Display Name:', ['class' => 'control-label']) !!}
+                            {!! Form::text('display_name', null, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group col-md-3" style="padding-top: 30px">
                             <label>
-                                {!! Form::checkbox('taxable', '1', ['class' => 'form-control']) !!}  Taxable
+                                {!! Form::checkbox('use_display_name', null, ['class' => 'form-control']) !!}  Use Display name?
                             </label>
-                            {!! Form::hidden('global', '1', array('id' => 'global')) !!}
+
                         </div>
 
+                        <div class="form-group col-md-12">
+                            {!! Form::label('shipping_address', 'Shipping Address:', ['class' => 'control-label']) !!}
+                            {!! Form::text('shipping_address', null, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group col-md-12">
+                            {!! Form::label('billing_address', 'Billing Address:', ['class' => 'control-label']) !!}
+                            {!! Form::text('billing_address', null, ['class' => 'form-control']) !!}
+                        </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
+                <div class="form-group col-md-12">
+                {!! Form::submit('Create New Customer', ['class' => 'btn btn-primary']) !!}
+                </div>
+                {!! Form::close() !!}
             </div><!-- /.col-sm-12 -->
-
-        {!! Form::submit('Create New Line Item', ['class' => 'btn btn-primary']) !!}
-
-        {!! Form::close() !!}
     </div>
 </div>
-
 @endsection
 

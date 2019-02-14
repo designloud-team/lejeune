@@ -71,7 +71,7 @@ Click the help icon above to learn more.
             position: absolute;
             top:12px;
             left:10px;
-            content: url(./uploads/2019/01/red-1.png);
+            content: url(/uploads/2019/01/red-1.png);
         }
         @media (min-width:768px) {
             #menu-main-menu {background-color: #E8D9B5;padding:10px 0 0 0;}
@@ -85,7 +85,7 @@ Click the help icon above to learn more.
                 content: '';
                 height: 18px;
                 width: 30px;
-                background-image: url(./img/pen-tip.png);
+                background-image: url(/img/pen-tip.png);
                 background-repeat: no-repeat;
                 background-size: cover;
                 top: 8px;
@@ -179,14 +179,14 @@ Click the help icon above to learn more.
                 /*left: -1.5%;*/
             /*}*/
             form label{
-                font-size: 24px;
+                font-size: 1.5em;
                 font-weight: 400!important;
             }
             body, ul, li,#menu-main-menu li.menu-item a {
                 font-size: 14px!important;
             }
             #footer1 .fl-row-content-wrap {
-                background-image: url(./img/footer2.jpg);
+                background-image: url(/img/footer2.jpg);
                 background-position: bottom left;
                 background-repeat: no-repeat;
                 background-size: 100% auto;
@@ -211,7 +211,12 @@ Click the help icon above to learn more.
                 background: #E8D9B5;
                 font-size: 18px;
                 font-weight: 700;
-            }
+
+        }
+        a.btn-link:visited,a.btn-link:active,a.btn-link:focus {
+            background-color: black;
+            color: #fff;
+        }
         }
     </style>
     {{--<script>--}}

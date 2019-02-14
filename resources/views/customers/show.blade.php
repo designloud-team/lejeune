@@ -1,6 +1,6 @@
 @extends('admin_template')
 @section('breadcrumbs')
-    {!! Breadcrumbs::render('items.show', $item) !!}
+    {!! Breadcrumbs::render('customers.show', $customer) !!}
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="pull-right">
-                        <p><a href="/customers/{{ $customer->hash_id }}/edit" class="btn btn-danger">Edit</a></p>
+                        <p><a href="/customers/{{ $customer->id }}/edit" class="btn btn-danger">Edit</a></p>
                     </div>
                 </div>
             </div>
@@ -20,15 +20,12 @@
                 <div class="col-xs-12">
                     <div class="box box-default">
                         <div class="box-header">
-                          <h3 class="box-title">{{ $customer->customer }}</h3>
+                          <h3 class="box-title">{{ $customer->name }}</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body pad">
-                            <p><strong>Description: </strong>{{ $customer->description }}</p>
-                            <p><strong>Amount: </strong>${{ $customer->amount }}</p>
-                            <p><strong>Quantity: </strong>{{ $customer->quantity }}</p>
-                            <p><strong>Taxable: </strong>{{ $taxable }}</p>
-                            @include('fields.view')
+                            <p><strong>Description: </strong>{{ $customer->name }}</p>
+                            <p><strong>Amount: </strong>${{ $customer->company }}</p>
                         </div>
                         
                     </div>
@@ -37,6 +34,4 @@
         </section>
     </div>
 </div>
-
-
 @endsection

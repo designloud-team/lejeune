@@ -22,8 +22,8 @@ $(document).ready(function(){
 });
 
 $(function() {
-    var url = "{!! route('items.data',['null','index']) !!}";
-    var table_selector = '.tbl-items';
+    var url = "{!! route('notaries.data',['null','index']) !!}";
+    var table_selector = '.tbl-notaries';
     var table =  $('.table');
 
     var oTable = $(table_selector).dataTable({
@@ -41,7 +41,7 @@ $(function() {
             }
         },
         columns: [
-            { data: 'item', name: 'item' },
+            { data: 'notary', name: 'notary' },
             { data: 'description', name: 'description' },
             { data: 'amount', name: 'amount' },
             { data: 'quantity', name: 'quantity' },
@@ -78,16 +78,16 @@ $(function() {
 
 });
 
-$('.table').on('click', '.item-delete', function(e){
+$('.table').on('click', '.notary-delete', function(e){
     e.preventDefault();
 
     tr = $(this).closest('tr');
-    var itemId = $(this).attr('data-id');
+    var notaryId = $(this).attr('data-id');
 
     swal({
         showLoaderOnConfirm: true,
         title: "Are you sure?",
-        text: "This Item will be deleted permanently from this system!",
+        text: "This notary will be deleted permanently from this system!",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#007AFF",
@@ -95,17 +95,17 @@ $('.table').on('click', '.item-delete', function(e){
         closeOnConfirm: false
     }, function() {
         $.ajax({
-            url:  '{{ str_replace('-1','',route('items.destroy',-1))  }}'+itemId,
+            url:  '{{ str_replace('-1','',route('notaries.destroy',-1))  }}'+notaryId,
             headers: { 'X-XSRF-TOKEN' : '{{\Illuminate\Support\Facades\Crypt::encrypt(csrf_token())}}' },
             error: function() {
-                swal("Cancelled", "{{trans('items.index.delete_unable')}}", "error");
+                swal("Cancelled", "{{trans('notaries.index.delete_unable')}}", "error");
             },
             success: function(response) {
                 if(response.success == 'true'){
                     tr.remove();
-                    swal("{{trans('items.index.delete_validation')}}", "{{trans('items.index.delete_msg')}}", "success");
+                    swal("{{trans('notaries.index.delete_validation')}}", "{{trans('notaries.index.delete_msg')}}", "success");
                 }else{
-                    swal("Cancelled", "{{trans('items.index.delete_unable')}}", "error");
+                    swal("Cancelled", "{{trans('notaries.index.delete_unable')}}", "error");
                 }
             },
 

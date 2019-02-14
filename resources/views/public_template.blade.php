@@ -6,6 +6,13 @@
     .white-box {
         padding: 0;
     }
+    .dash {
+        padding: 5%;
+        /*border: 1px solid #eee;*/
+        /*list-style: square;*/
+        min-width: 100%;
+        /*box-shadow: -1px -1px 7px #ddd ;*/
+    }
 </style>
 <body class="fix-header page-template-default page page-id-14 fl-builder fl-theme-builder-header fl-theme-builder-footer fl-preset-default fl-fixed-width fl-search-active">
 

@@ -1,7 +1,19 @@
 @include('html_head')
-@push('styles')
-@endpush
-<body class="fix-header page-template-default page page-id-14 fl-builder fl-theme-builder-header fl-theme-builder-footer fl-preset-default fl-fixed-width fl-search-active">
+<style>
+    .dash {
+        padding: 2% 5%;
+        border: 2px solid #eee;
+        background-color: #eee;
+        list-style: square;
+        /*box-shadow: -1px -1px 7px #ddd ;*/
+    }
+    .fieldset {
+        padding: 2.5%;
+        border: 2px solid #eee;
+        background-color: #eee;
+    }
+</style>
+<body id="main-body" class="fix-header page-template-default page page-id-14 fl-builder fl-theme-builder-header fl-theme-builder-footer fl-preset-default fl-fixed-width fl-search-active">
 
 <div id="wrapper">
     <!-- Header -->
@@ -45,6 +57,21 @@
                         </div>
                     @endif
                 <!-- Your Page Content Here -->
+                        {{--<a href="javascript:history.back()" class="btn btn-primary">Back</a>--}}
+
+                        <div width="862" background="{{asset('/img/paper2.jpg')}}" height="600" class="padded" valign="top">
+                            <p id="tick2" class="pull-right" style="font-size:12px;color:#800000">Today is {{date('F j, Y')}} <span id="clock"></span></p>
+                        </div>
+
+                        <div class="col-md-12" style="margin:1% auto; text-align: center">
+                            <hr>
+                            <a href="/">Home</a> &nbsp;|&nbsp;<a href="/customers-dashboard">Customer Administration</a>  &nbsp;|&nbsp;<a href="/notaries-dashboard">Notary Administration</a> &nbsp;|&nbsp;<a href="/jobs-dashboard">Job Administration</a> &nbsp;|&nbsp;<a href="/invoices-dashboard">Invoice: Customers</a> &nbsp;|&nbsp;<a href="/invoices-dashboard">Invoice: Notaries</a> &nbsp;|&nbsp;<a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                             document.getElementById('logout-form1').submit();">
+                                Logout</a>
+                            <form id="logout-form1" action="{{ url('/logout') }}" method="POST"
+                                  style="display: none;">{{ csrf_field() }}</form>
+                            <hr>
+                        </div>
                     @yield('content')
             </div>
         </div>
