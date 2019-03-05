@@ -17,9 +17,8 @@
    <script type="text/javascript">
     $(document).ready(function () {
      setInterval('updateClock()', 1000 )
-
-
     })
+
     function updateClock ( )
     {
      var currentTime = new Date ( );
@@ -47,6 +46,34 @@
      // Update the time display
      $("#clock").html(currentTimeString);
     }
+   </script>
+   <script>
+       jQuery(document).ready(function ($) {
+           $('select').select2({
+               width: '100%'
+           });
+
+           $('input[type="checkbox"]').iCheck({
+               checkboxClass: 'icheckbox_minimal-red'
+           });
+           $('input[type="radio"]').iCheck({
+               radioClass: 'iradio_minimal-red'
+           });
+
+           // $('button[type="submit"]').click(function () {
+               $('form').bind('submit', function () {
+                   $(this).find('input[type="checkbox"]').each( function () {
+                       var checkbox = $(this);
+                       if( checkbox.is(':checked')) {
+                           checkbox.attr('value','1');
+                       } else {
+                           checkbox.after().append(checkbox.clone().attr({type:'hidden', value: '0'}));
+                           checkbox.prop('disabled', true);
+                       }
+                   })
+               });
+           // })
+       })
    </script>
 </body>
 

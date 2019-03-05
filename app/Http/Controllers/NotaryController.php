@@ -64,9 +64,14 @@ class NotaryController extends Controller
     public function store(Request $request)
     {
         //
-        $data = $request->all();
+        $request->validate([
+            'email' => ['unique:notaries'],
+        ]);
 
-        dd($data);
+        $data = $request->all();
+        if(!isset($request->delivery_address)) {
+            $data['delivery_address'] = $data['mailing_address'];
+        }
         $notary = Notary::create($data);
 
         return view('notaries.show', compact('notary'));
@@ -135,6 +140,7 @@ class NotaryController extends Controller
 
         return $status == 1? true : false;
     }
+
     protected function getDatatablesData()
     {
 
@@ -147,4 +153,5 @@ class NotaryController extends Controller
             ->rawColumns(['actions'])
             ->make(true);
     }
+
 }

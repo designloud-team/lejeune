@@ -3,6 +3,8 @@
     <link href="{{ asset('/css/DT_bootstrap.css') }}" rel="stylesheet" media="screen">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css" />
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+
     <style>
         .table-btn {
             padding: 6px 5px;
@@ -28,6 +30,8 @@
 @stop
 
 @section('content')
+    <div id="revisions-table_processing" class="dataTables_processing" style="display: none;">Processing...</div>
+
     <div class="toggle-body" style="display:none;">
         <div class="box box-default">
             <div class="box-header with-border">

@@ -37,9 +37,8 @@ class CustomerController extends Controller
     {
 
         if (request()->wantsJson()) {
-//            return \GuzzleHttp\json_encode($this->getDatatablesData()->getData());
 
-            return response()->json($this->getDatatablesData()->getData());
+            \GuzzleHttp\json_encode($this->getCustomerDatatablesData());
         }
         return view('customers.index', [
             'page_title' => 'Customers',
@@ -145,12 +144,21 @@ class CustomerController extends Controller
         return $status == 1? true : false;
 
     }
-    protected function getDatatablesData()
+
+    public function getDatatablesData($type, Request $request)
+    {
+        switch ($type) {
+            case 'index':
+                return $this->getCustomerDTData();
+                break;
+        }
+    }
+    protected function getCustomerDTData()
     {
 
         $query = Customer::all();
 
-        return Datatables::of($query)
+        return DataTables::of($query)
             ->addColumn('actions', function ($customer) {
                 return (string) view('customers.partials.actions', compact('customer'));
             })

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Notary;
+use Session;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -23,6 +25,23 @@ class PublicController extends Controller
             default:
                 return view('home');
         }
+    }
+
+    public function saveNotary(Request $request)
+    {
+        $request->validate([
+            'email' => ['unique:notaries'],
+        ]);
+        $data = $request->all();
+
+        if(!isset($request->delivery_address)) {
+            $data['delivery_address'] = $data['mailing_address'];
+        }
+        $notary = Notary::create($data);
+
+        Session::flash('flash_message', 'Notary Saved');
+
+        return redirect()->back();
     }
 
 }

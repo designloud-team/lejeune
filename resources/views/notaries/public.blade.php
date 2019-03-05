@@ -23,11 +23,10 @@
                                                                     <p><strong>All fields marked with an asterisk (*) are Required</strong></p>
                                                                     {!! Form::open([
                                                                     'id'=>'notary-registration-form',
-                                                                    'route' => 'search.notary'
                                                                     ]) !!}
                                                                     <div id="step-1">
                                                                         <p><span style="text-decoration: underline">Step 1: Check to see if you are already listed in our database</span> </p>
-                                                                       <br>
+                                                                        <br>
                                                                         <div class="form-group">
                                                                             <div class="col-md-1 ">
                                                                                 {!! Form::label('email','Email:',['class'=> 'control-label']) !!}
@@ -37,22 +36,22 @@
                                                                             </div>
 
                                                                             <div class="col-md-2">
-                                                                                {!! Form::submit('Search',['class'=> 'btn btn-link', 'id'=>'search']) !!}
+                                                                                {!! Form::button('Search',['class'=> 'btn btn-link', 'id'=>'search']) !!}
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <div id="step-2">
 
-                                                                        </div>
-                                                                 {!! Form::close() !!}
+                                                                    </div>
+                                                                    {!! Form::close() !!}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -62,23 +61,5 @@
             </div>
         </div>
     </div>
-
-<script type="text/javascript">
-        // $.ajaxSetup({
-        //     headers: {
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //     }
-        // });
-        // $('#search').click(function (e) {
-        //     e.preventDefault()
-        //     e.stopImmediatePropagation()
-        //     var email = $('#email').val();
-        //     $.post('/search/notary', {email: email}).done(function (data) {
-        //         alert('done')
-        //     })
-        //
-        // })
-    // })
-</script>
 @endsection
 

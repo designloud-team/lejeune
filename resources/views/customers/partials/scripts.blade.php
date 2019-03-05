@@ -1,9 +1,13 @@
-@push('scripts')
-{{--<script src="//code.jquery.com/jquery-1.12.4.js"></script>--}}
-{{--<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>--}}
-{{--<script src="//cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>--}}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.4.1/js/buttons.colVis.min.js"></script>
+
 <script>
-$(document).ready(function(){
+jQuery(document).ready(function($){
 
     $('.toggle-trigger').click(function(e){
         e.preventDefault();
@@ -17,10 +21,10 @@ $(document).ready(function(){
 
 });
 
-$(function() {
+jQuery(document).ready(function($){
 
     var rows_selected = [];
-    var url = "{!! route('customers.data',['null','index']) !!}";
+    var url = "{!! route('customers.data',['index']) !!}";
     var table_selector = '.tbl-customers';
     var table = $('.table');
 
@@ -28,18 +32,20 @@ $(function() {
     oTable = $(table_selector).dataTable({
 
         "dom": '<"top"f>rt<"bottom"ilp><"clear">',
+        processing: true,
         serverSide: true,
-        ajax:"{!! route('customers.data',['null','index']) !!}",
+        "ajax": {
+            "url":"{!! route('customers.data',['index']) !!}",
+        },
         columns: [
             {
                 data: '',
                 defaultContent: '',
-//                className: 'select-checkbox',
                 orderable: false
             },
-            {data: 'name', name: 'Name'},
-            {data: 'display_name', name: 'Display name'},
-            {data: 'actions', name: 'Actions', searchable: "false", orderable: "false"}
+            {data: 'name', name: 'name'},
+            {data: 'display_name', name: 'display_name'},
+            {data: 'actions', name: 'actions', searchable: "false", orderable: "false"}
         ],
 //        select: {
 //            style:    'os',
@@ -49,11 +55,9 @@ $(function() {
             {
                 'targets': 0,
                 'render': function (data, type, row, meta) {
-                    if (type === 'display') {
                         data = '<div class="checkbox checkbox-info">' +
                             '<input class="dt-checkboxes" name="ids[]" type="checkbox" value="' + row.id + '" id="' + row.id + '">' +
                             '<label></label> </div>';
-                    }
 
                     return data;
                 },
@@ -200,4 +204,4 @@ $(function() {
     });
 });
 </script>
-@endpush
+{{--@endpush--}}

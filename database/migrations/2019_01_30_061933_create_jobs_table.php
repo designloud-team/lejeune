@@ -43,6 +43,7 @@ class CreateJobsTable extends Migration
             $table->string('phone');
             $table->string('alternate_phone')->nullable();
             $table->string('fax')->nullable();
+            $table->string('website')->nullable();
             $table->boolean('e_docs')->default(0);
             $table->boolean('insurance')->default(0);
             $table->string('insurance_amount')->nullable();

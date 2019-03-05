@@ -19,6 +19,16 @@ Route::post('orders', ['uses'=> 'OrderController@store']);
 Route::get('orders/{id}/pdf', ['as'=>'order.pdf','uses'=> 'OrderController@pdf']);
 Route::get('notary-registration','PublicController@getpage');
 Route::get('contact', 'PublicController@getpage');
+Route::group( ['prefix' => 'search'], function() {
+    Route::get( '/notary', function() {
+        return redirect()->to('/notary-registration');
+    });
+    Route::post( '/notary', ['as'=>'search.notary', 'uses'=>'SearchController@findNotaryByEmail'] );
+    Route::post( 'notary/save', ['as'=>'notaries.save', 'uses'=>'PublicController@saveNotary'] );
+//        Route::post( '/customer', ['as'=>'search.customer', 'uses'=>'SearchController@create'] );
+//        Route::post( '/job', ['as'=>'search.job', 'uses'=>'SearchController@store'] );
+//        Route::post( '/report', ['as'=>'search.report', 'uses'=>'SearchController@show'] );
+});
 //
 Route::group(array('middleware'=> 'auth'), function (){
     Route::get('dashboard', ['as'=>'dashboard.index','uses'=>'HomeController@index']);
@@ -44,7 +54,9 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::post( '/destroy-all', ['as'=>'customers.destroy-all', 'uses'=>'CustomerController@destroyAll'] );
         Route::get( '/downloadExcel/{type}', ['as'=>'customers.downloadExcel', 'uses'=>'CustomerController@downloadExcel'] );
         Route::post( '/importExcel', ['as'=>'customers.importExcel', 'uses'=>'CustomerController@importExcel'] );
-        Route::get( '/data/{id}/{type}', ['as'=>'customers.data', 'uses'=>'CustomerController@getDatatablesData'] );
+        Route::get( '/data/{type}', ['as'=>'customers.data', 'uses'=>'CustomerController@getDatatablesData'] );
+        Route::get( '/data/{delete}', ['as'=>'customers.destroy-all', 'uses'=>'CustomerController@getDatatablesData'] );
+
     });
 
     Route::group( ['prefix' => 'notaries'], function() {
@@ -63,6 +75,8 @@ Route::group(array('middleware'=> 'auth'), function (){
                 Route::get( '/data/{id}/{type}', ['as'=>'notaries.data', 'uses'=>'NotaryController@getCustomerJsonData'] );
             });
     });
+
+
 
 });
 

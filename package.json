@@ -16,8 +16,8 @@
         "bootstrap-sass": "^3.3.7",
         "chartist": "^0.9.7",
         "cross-env": "^5.1",
-        "datatables.net": "^1.10.16",
-        "datatables.net-bs": "^1.10.16",
+        "datatables.net": "^1.10.19",
+        "datatables.net-bs": "^1.10.19",
         "file-loader": "^1.1.11",
         "jquery": "^3.2",
         "jquery-ui": "^1.12.1",
@@ -40,5 +40,9 @@
         "vue": "^2.5.17",
         "vue-loader": "^15.6.2",
         "vue-template-compiler": "^2.5.17"
+    },
+    "dependencies": {
+        "i": "^0.3.6",
+        "npm": "^6.8.0"
     }
 }

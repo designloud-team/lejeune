@@ -34,6 +34,7 @@ class Notary extends Model
     ];
 
     protected $hidden = [];
+    protected $table = 'notaries';
 
     protected $dates = ['deleted_at'];
 
