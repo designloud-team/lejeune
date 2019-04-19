@@ -28,17 +28,17 @@ class NotaryController extends Controller
      */
     public function index()
     {
-        //
-        if (request()->wantsJson()) {
-//            return \GuzzleHttp\json_encode($this->getDatatablesData()->getData());
 
-            return response()->json($this->getDatatablesData()->getData());
+        if(request()->wantsJson()) {
+
+            \GuzzleHttp\json_encode($this->getNotaryDTData());
         }
         return view('notaries.index', [
             'page_title' => 'Notaries',
             'page_description' => 'All Notaries',
             'notaries' => Notary::all()
         ]);
+
     }
 
     /**
@@ -140,13 +140,30 @@ class NotaryController extends Controller
 
         return $status == 1? true : false;
     }
-
-    protected function getDatatablesData()
+    public function getDatatablesData($type, Request $request)
+    {
+        switch ($type) {
+            case 'index':
+                return $this->getNotaryDTData();
+                break;
+            case 'delete':
+//                return $this->deleteNotaryDTData();
+                break;
+        }
+    }
+    protected function getNotaryDTData()
     {
 
         $query = Notary::all();
 
         return Datatables::of($query)
+            ->addColumn('hash_id', function ($result) {
+                return $result->hash_id;
+            })
+            ->addColumn('name', function ($notary) {
+                return $notary->first_name." ".$notary->last_name;
+
+            })
             ->addColumn('actions', function ($notary) {
                 return (string) view(' notaries.partials.actions', compact('notary'));
             })

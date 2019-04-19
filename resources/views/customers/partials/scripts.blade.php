@@ -5,7 +5,6 @@
 <script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
 <script src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.4.1/js/buttons.colVis.min.js"></script>
-
 <script>
 jQuery(document).ready(function($){
 
@@ -79,8 +78,6 @@ jQuery(document).ready(function($){
         "bSortClasses": false,
         "aLengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"] // change per page values here
         ],
-        // set the initial value
-
         "iDisplayLength": 10,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 
@@ -103,7 +100,6 @@ jQuery(document).ready(function($){
             $(nRow).attr("data-href", href);
             return nRow;
         }
-
     });
 
     $('#select-all').on('click', function () {

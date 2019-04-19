@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Repositories\CustomerRepository;
 use Auth;
+use Session;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -121,7 +122,6 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         $data = $request->all();
 
-        dd($data);
         $customer->update($data);
 
         return view('customers.show', compact('customer'));
@@ -140,8 +140,13 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
 
         $status = $customer->delete();
+        if(request()->ajax())
+        return $status == 1? 'true' : 'false';
 
-        return $status == 1? true : false;
+        Session::flash('flash_message', 'Customer Successfully Deleted');
+
+        return redirect()->to('customers') ;
+
 
     }
 
@@ -151,6 +156,9 @@ class CustomerController extends Controller
             case 'index':
                 return $this->getCustomerDTData();
                 break;
+            case 'delete':
+//                return $this->deleteCustomerDTData();
+                break;
         }
     }
     protected function getCustomerDTData()
@@ -159,6 +167,9 @@ class CustomerController extends Controller
         $query = Customer::all();
 
         return DataTables::of($query)
+            ->addColumn('hash_id', function ($result) {
+                return $result->hash_id;
+            })
             ->addColumn('actions', function ($customer) {
                 return (string) view('customers.partials.actions', compact('customer'));
             })

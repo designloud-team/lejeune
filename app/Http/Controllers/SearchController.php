@@ -16,7 +16,7 @@ class SearchController extends Controller
         $notary = Notary::where('email', $email)->first();
 
         if($notary) {
-            return view('notaries.public');;
+            return view('notaries.public', compact('notary'));
         } else {
             return view('notaries.new');
         }

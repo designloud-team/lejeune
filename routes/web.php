@@ -71,9 +71,9 @@ Route::group(array('middleware'=> 'auth'), function (){
             Route::post( '/destroy-all', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@destroyAll'] );
             Route::get( '/downloadExcel/{type}', ['as'=>'notaries.downloadExcel', 'uses'=>'NotaryController@downloadExcel'] );
             Route::post( '/importExcel', ['as'=>'notaries.importExcel', 'uses'=>'NotaryController@importExcel'] );
-            Route::group( ['prefix' => 'datatables'], function() {
-                Route::get( '/data/{id}/{type}', ['as'=>'notaries.data', 'uses'=>'NotaryController@getCustomerJsonData'] );
-            });
+            Route::get( '/data/{type}', ['as'=>'notaries.data', 'uses'=>'NotaryController@getDatatablesData'] );
+            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
+//            Route::get('/{id}/verify', 'NotaryController@verify');
     });
 
 
