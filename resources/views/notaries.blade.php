@@ -1,6 +1,8 @@
 @extends('public_template')
 <style>
-
+.email-label {
+    font-size: 1.4em;
+}
 </style>
 @section('content')
     <div class="fl-page-content" itemprop="mainContentOfPage">
@@ -30,7 +32,7 @@
                                                                        <br>
                                                                         <div class="form-group">
                                                                             <div class="col-md-1 ">
-                                                                                {!! Form::label('email','Email:',['class'=> 'control-label']) !!}
+                                                                                {!! Form::label('email','Email:',['class'=> 'control-label email-label']) !!}
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 {!! Form::email('email',null,['class'=> 'form-control', 'id'=>'email']) !!}

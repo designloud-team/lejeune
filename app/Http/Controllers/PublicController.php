@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Notary;
+use App\Notifications\NotaryVerificationEmail;
 use Session;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -42,6 +44,19 @@ class PublicController extends Controller
         Session::flash('flash_message', 'Notary Saved');
 
         return redirect()->back();
+    }
+    public function verify($id)
+    {
+
+        $notary = Notary::findOrFail($id);
+
+        if ($notary) {
+
+            $notary->notify(new NotaryVerificationEmail($notary));
+
+            return response()->json(['message' => 'Verification Email Sent']);
+        }
+
     }
 
 }

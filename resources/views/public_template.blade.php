@@ -6,6 +6,7 @@
     .white-box {
         padding: 0;
     }
+
     .dash {
         padding: 5%;
         /*border: 1px solid #eee;*/

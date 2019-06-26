@@ -41,7 +41,7 @@
 You can add your own CSS here.
 
 Click the help icon above to learn more.
-*/
+*/     .alert {background: #fff!important;}
 
         h1.fl-post-title {
             display:none;

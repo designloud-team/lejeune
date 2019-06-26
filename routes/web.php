@@ -19,6 +19,8 @@ Route::post('orders', ['uses'=> 'OrderController@store']);
 Route::get('orders/{id}/pdf', ['as'=>'order.pdf','uses'=> 'OrderController@pdf']);
 Route::get('notary-registration','PublicController@getpage');
 Route::get('contact', 'PublicController@getpage');
+Route::get('notaries/{id}/verify', 'PublicController@verify');
+
 Route::group( ['prefix' => 'search'], function() {
     Route::get( '/notary', function() {
         return redirect()->to('/notary-registration');
@@ -73,8 +75,8 @@ Route::group(array('middleware'=> 'auth'), function (){
             Route::post( '/importExcel', ['as'=>'notaries.importExcel', 'uses'=>'NotaryController@importExcel'] );
             Route::get( '/data/{type}', ['as'=>'notaries.data', 'uses'=>'NotaryController@getDatatablesData'] );
             Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
-//            Route::get('/{id}/verify', 'NotaryController@verify');
     });
+
 
 
 

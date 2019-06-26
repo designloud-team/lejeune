@@ -1,4 +1,4 @@
-@extends('admin_template')
+@extends('public_template')
 <style>
     .content {
         padding: 2% 5%;
@@ -16,10 +16,9 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <div class="pull-right">
-                            <p><a href="/notaries/{{ $notary->id }}/verify" class="btn btn-danger">Edit Notary</a></p>
+                            <p><a href="#" class="btn btn-danger" id="verify-btn">Edit Notary</a></p>
                         </div>
                         <p>We found one match in our database.</p>
-
                     </div>
                 </div>
 
@@ -41,6 +40,20 @@
             </section>
         </div>
     </div>
-
-
 @endsection
+<script>
+    jQuery(document).ready(function ($) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('#verify-btn').click(function (e) {
+            e.preventDefault()
+            e.stopImmediatePropagation()
+            $.post('/notaries/{{ $notary->id }}/verify').done(function (data) {
+                alert(data.message)
+            })
+        })
+    })
+</script>
