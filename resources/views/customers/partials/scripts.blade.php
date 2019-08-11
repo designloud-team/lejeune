@@ -44,7 +44,7 @@ jQuery(document).ready(function($){
             },
             {data: 'name', name: 'name'},
             {data: 'display_name', name: 'display_name'},
-            {data: 'actions', name: 'actions', searchable: "false", orderable: "false"}
+            {data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
         ],
 //        select: {
 //            style:    'os',
@@ -119,7 +119,7 @@ jQuery(document).ready(function($){
         window.location = path;
     });
 
-    $('.dataTables_filter input[type="search"]').addClass('form-control'); // <-- add this line
+    $('.dataTables_filter input[type="search"]').addClass('form-control').closest('label').attr('style', 'float:right!important'); // <-- add this line
 
     $('#btn-apply').on('click', function (e) {
         e.preventDefault();

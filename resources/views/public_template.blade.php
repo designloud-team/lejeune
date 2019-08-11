@@ -70,7 +70,6 @@
 </div>
 
 <!-- ./wrapper -->
-@push('scripts')
-@endpush
+
 
 @include('html_footer')

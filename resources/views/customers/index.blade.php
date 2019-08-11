@@ -20,8 +20,8 @@
             background-color: transparent;
             padding: 0;
         }
-        table.dataTable thead .sorting:after , table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after{
-            content: none  !important;
+        div.top div.dataTables_filter label {
+            float: right!important;
         }
     </style>
 @endpush
@@ -70,7 +70,7 @@
             <div class="pull-right">
                 <div class="btn-group">
                     <a href="/customers/create" class="btn btn-danger">Add Customer</a>
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" class="btn btn-danger dropdown-toggle caret-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>

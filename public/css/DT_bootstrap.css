@@ -8,8 +8,8 @@ div.dataTables_length select {
 	width: 75px;
 }
 
-div.dataTables_filter label {
-	float: right;
+div.dataTables_filter label,  .dataTable div.top div.dataTables_filter label {
+	float: right!important;
 }
 
 div.dataTables_info {
@@ -226,9 +226,10 @@ dataTables_wrapper .dataTables_paginate {
 	text-align: center;
 	color: #444;
 	font-size: 14px;
-	background: url("/img/loading_bar.gif") no-repeat center 38px #fff;
+	background: url("../img/loading_bar.gif") no-repeat center 38px #fff;
 	box-shadow: 2px 2px 5px #444;
 	-moz-box-shadow: 2px 2px 5px #444;
 	-webkit-box-shadow: 2px 2px 5px #444;
 	z-index: 9999;
 }
+

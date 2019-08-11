@@ -67,7 +67,7 @@ table.dataTable thead .sorting:after , table.dataTable thead .sorting_asc:after,
             <div class="pull-right">
                 <div class="btn-group">
                     <a href="/items/create" class="btn btn-danger">Add Line Item</a>
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" class="btn btn-danger dropdown-toggle caret-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>

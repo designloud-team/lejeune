@@ -46,7 +46,7 @@ $(function() {
             { data: 'amount', name: 'amount' },
             { data: 'quantity', name: 'quantity' },
             { data: 'taxable', name: 'taxable' },
-            { data: 'actions', name: 'Actions',searchable: "false", orderable: "false" }
+            {data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
         ],
         "aoColumnDefs" : [
             {
@@ -67,7 +67,7 @@ $(function() {
     });
 
 
-    $('.dataTables_filter input[type="search"]').addClass('form-control'); // <-- add this line
+    $('.dataTables_filter input[type="search"]').addClass('form-control').closest('label').attr('style', 'float:right!important'); // <-- add this line
 
 
     $('#display,#status').on('change',function (e) {

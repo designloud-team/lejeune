@@ -50,7 +50,7 @@ jQuery(document).ready(function($){
             { data: 'name', name: 'Name' },
             { data: 'business_name', name: 'Business' },
             { data: 'state', name: 'State' },
-            { data: 'actions', name: 'Actions',searchable: "false", orderable: "false" }
+            {data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
         ],
         columnDefs: [
             {
@@ -105,7 +105,7 @@ jQuery(document).ready(function($){
     });
 
 
-    $('.dataTables_filter input[type="search"]').addClass('form-control'); // <-- add this line
+    $('.dataTables_filter input[type="search"]').addClass('form-control').closest('label').attr('style', 'float:right!important'); // <-- add this line
 
     $('#btn-apply').on('click', function (e) {
         e.preventDefault();

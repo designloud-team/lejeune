@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">&nbsp;</div>
                 <div class="card-body">
-                    <h4><a href="{{url('/customers-dashboard')}}">Customer Administration</a></h4>
+                    <h4><a href="{{url('/customers-dashboard')}}">Customer<br> Administration</a></h4>
                     <p>Add/Edit/Delete Customers</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-header">&nbsp;</div>
                 <div class="card-body">
-                    <h4><a href="{{url('/notaries-dashboard')}}">Notary Administration</a></h4>
+                    <h4><a href="{{url('/notaries-dashboard')}}">Notary<br> Administration</a></h4>
                     <p>Search/Add/Edit/Delete Notaries</p>
                 </div>
             </div>
@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-header">&nbsp;</div>
                 <div class="card-body">
-                    <h4><a href="{{url('/jobs-dashboard')}}">Active Job Administration</a></h4>
+                    <h4><a href="{{url('/jobs-dashboard')}}">Active Job<br> Administration</a></h4>
                     <p>Search/Add/Edit/Delete Jobs</p>
                 </div>
             </div>
@@ -41,7 +41,7 @@
             <div class="card">
                 <div class="card-header">&nbsp;</div>
                 <div class="card-body">
-                    <h4><a href="{{url('/invoices-dashboard')}}">Invoicing Center</a></h4>
+                    <h4><a href="{{url('/invoices-dashboard')}}">Invoicing<br> Center</a></h4>
                     <p>Search/Add/Edit/Delete Invoices</p>
                 </div>
             </div>

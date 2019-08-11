@@ -12,6 +12,14 @@
         border: 2px solid #eee;
         background-color: #eee;
     }
+
+    input.dt-checkboxes {
+        position: absolute;
+        margin-left: 0!important;
+    }
+    .btn-group {height: 35px;}
+
+    .caret-toggle {height: 97%;}
 </style>
 <body id="main-body" class="fix-header page-template-default page page-id-14 fl-builder fl-theme-builder-header fl-theme-builder-footer fl-preset-default fl-fixed-width fl-search-active">
 
