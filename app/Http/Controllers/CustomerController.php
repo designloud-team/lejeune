@@ -74,7 +74,7 @@ class CustomerController extends Controller
         //
         $data = $request->all();
 
-        dd($data);
+//        dd($data);
         $customer = Customer::create($data);
 
         return view('customers.show', compact('customer'));
