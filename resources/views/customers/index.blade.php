@@ -108,6 +108,7 @@
                                 <th></th>
                                 <th>Name</th>
                                 <th>Display Name</th>
+                                <th>Email</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

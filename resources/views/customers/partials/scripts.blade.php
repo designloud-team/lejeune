@@ -44,6 +44,7 @@ jQuery(document).ready(function($){
             },
             {data: 'name', name: 'name'},
             {data: 'display_name', name: 'display_name'},
+            {data: 'email', name: 'email'},
             {data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
         ],
 //        select: {

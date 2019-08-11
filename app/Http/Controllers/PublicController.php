@@ -24,6 +24,8 @@ class PublicController extends Controller
                 return view('notaries');
             case 'contact':
                 return view('contact');
+            case 'signin':
+                return view('signin');
             default:
                 return view('home');
         }

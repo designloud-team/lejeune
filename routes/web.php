@@ -20,6 +20,7 @@ Route::get('orders/{id}/pdf', ['as'=>'order.pdf','uses'=> 'OrderController@pdf']
 Route::get('notary-registration','PublicController@getpage');
 Route::get('contact', 'PublicController@getpage');
 Route::get('notaries/{id}/verify', 'PublicController@verify');
+Route::get('signin', 'PublicController@getpage');
 
 Route::group( ['prefix' => 'search'], function() {
     Route::get( '/notary', function() {

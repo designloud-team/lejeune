@@ -170,6 +170,9 @@ class CustomerController extends Controller
             ->addColumn('hash_id', function ($result) {
                 return $result->hash_id;
             })
+            ->editColumn('name', function ($customer) {
+                return $customer->use_display_name == 1 ? $customer->display_name : $customer->name;
+            })
             ->addColumn('actions', function ($customer) {
                 return (string) view('customers.partials.actions', compact('customer'));
             })

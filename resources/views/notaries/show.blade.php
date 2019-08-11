@@ -20,13 +20,20 @@
                 <div class="col-xs-12">
                     <div class="box box-default">
                         <div class="box-header">
-                          <h3 class="box-title">{{ $notary->first_name }}</h3>
+                          <h3 class="box-title">{{$notary->business_name ?$notary->business_name.', ':'' }}{{ $notary->first_name }} {{ $notary->last_name }}</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body pad">
-                            <p><strong>Last name: </strong>{{ $notary->last_name }}</p>
                             <p><strong>State: </strong>{{ $notary->state }}</p>
-                            <p><strong>Address: </strong>{{ $notary->delivery_address }}</p>
+                            <p><strong>Business Name: </strong>{{ $notary->business_name }}</p>
+                            <p><strong>Display: </strong>{{ $notary->display_name }}</p>
+                            <p><strong>Email: </strong>{{ $notary->email }}</p>
+                            <p><strong>Phone: </strong>{{ $notary->phone }}</p>
+                            <p><strong>Alt Phone: </strong>{{ $notary->alternate_phone }}</p>
+                            <p><strong>Fax: </strong>{{ $notary->fax }}</p>
+                            <p><strong>Website: </strong>{{ $notary->website }}</p>
+                            <p><strong>Mailing: </strong>{{ $notary->mailing_address }}</p>
+                            <p><strong>Deliver: </strong>{{ $notary->delivery_address }}</p>
                         </div>
                         
                     </div>

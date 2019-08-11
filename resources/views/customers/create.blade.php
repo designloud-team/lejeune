@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group col-md-3" style="padding-top: 30px">
                             <label>
-                                {!! Form::checkbox('use_display_name', null, ['class' => 'form-control']) !!}  Use Display name?
+                                {!! Form::checkbox('use_display_name', 0, null, ['class' => 'form-control']) !!}  Use Display name?
                             </label>
 
                         </div>
@@ -62,8 +62,12 @@
                             {!! Form::text('shipping_address', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group col-md-12">
+                            {!! Form::checkbox('same_as_shipping', 0, null, ['class' => 'form-control', 'id' => 'same_as_shipping']) !!}
+                            {!! Form::label('same_as_shipping', 'Billing same as Shipping address?', ['class' => 'control-label', 'id'=> 'shipping_address']) !!}
+                        </div>
+                        <div class="form-group col-md-12">
                             {!! Form::label('billing_address', 'Billing Address:', ['class' => 'control-label']) !!}
-                            {!! Form::text('billing_address', null, ['class' => 'form-control']) !!}
+                            {!! Form::text('billing_address', null, ['class' => 'form-control', 'id'=> 'billing_address']) !!}
                         </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
@@ -75,4 +79,19 @@
     </div>
 </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#same_as_shipping').on('ifChecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#billing_address').val($('#shipping_address').val());
+            // }
+        })
+        $('#same_as_shipping').on('ifUnchecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#billing_address').val('');
+            // }
+        })
+    })
+</script>
 

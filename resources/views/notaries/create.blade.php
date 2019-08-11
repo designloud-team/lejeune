@@ -19,7 +19,7 @@
                     <div class="box-body pad">
                         <div class="form-group col-md-12" style="">
                             <label>
-                                {!! Form::checkbox('local', null, ['class' => 'form-control']) !!} Is this a Local Notary?
+                                {!! Form::checkbox('local', 0, null, ['class' => 'form-control']) !!} Is this a Local Notary?
                             </label>
                         </div>
                         <div class="box-body pad">
@@ -45,11 +45,15 @@
 
                                 <div class="form-group col-md-12">
                                     {!! Form::label('mailing_address', 'Mailing Address:', ['class' => 'control-label']) !!}
-                                    {!! Form::text('mailing_address', null, ['class' => 'form-control']) !!}
+                                    {!! Form::text('mailing_address', null, ['class' => 'form-control', 'required',  'id' => 'mailing_address']) !!}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    {!! Form::checkbox('same_as_mailing', 0, null, ['class' => 'form-control', 'id' => 'same_as_mailing']) !!}
+                                    {!! Form::label('same_as_mailing', 'Delivery same as Mailing address?', ['class' => 'control-label']) !!}
                                 </div>
                                 <div class="form-group col-md-12">
                                     {!! Form::label('delivery_address', 'Delivery Address:', ['class' => 'control-label']) !!}
-                                    {!! Form::text('delivery_address', null, ['class' => 'form-control']) !!}
+                                    {!! Form::text('delivery_address', null, ['class' => 'form-control', 'id' => 'delivery_address' ]) !!}
                                 </div>
                                 <div class="form-group col-md-6">
                                     {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
@@ -77,10 +81,10 @@
                                 </div>
                                 <div class="form-group col-md-12" style="">
                                     <label>
-                                        {!! Form::checkbox('insurance', null, ['class' => 'form-control']) !!}  Do you have insurance?
+                                        {!! Form::checkbox('insurance', 0, null, ['class' => 'form-control', 'id' => 'insurance']) !!}  Do you have insurance?
                                     </label>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" id="insurance_amount">
                                     {!! Form::label('insurance_amount', 'Insurance Amount:', ['class' => 'control-label']) !!}
                                     {!! Form::text('insurance_amount', null, ['class' => 'form-control']) !!}
                                 </div>
@@ -98,5 +102,31 @@
         </div>
     </div>
     </div>
+    </div>
 @endsection
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#same_as_mailing').on('ifChecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#delivery_address').val($('#mailing_address').val());
+            // }
+        })
+        $('#same_as_mailing').on('ifUnchecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#delivery_address').val('');
+            // }
+        })
+        $('#insurance_amount').css('display', 'none');
+        $('#insurance').on('ifChecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#insurance_amount').css('display', 'block');
+            // }
+        })
+        $('#insurance').on('ifUnchecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#insurance_amount').css('display', 'none');
+            // }
+        })
+    })
+</script>

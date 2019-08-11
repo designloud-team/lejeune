@@ -20,45 +20,66 @@
                                     <div class="fl-row-content-wrap">
                                         <div class="fl-row-content fl-row-fixed-width fl-node-content">
                                             <div class="fl-col-group fl-node-5c17f1c59f6a0" data-node="5c17f1c59f6a0">
-                                                <div class="fl-col fl-node-5c17f1c59f825" data-node="5c17f1c59f825">
+                                                <div class="" data-node="5c17f1c59f825">
                                                     <div class="fl-col-content fl-node-content">
                                                         <div class="fl-module fl-module-rich-text fl-node-5c17f1f77cf80" data-node="5c17f1f77cf80">
                                                             <div class="fl-module-content fl-node-content">
                                                                 <div class="fl-rich-text">
-                                                                    <h1 style="">Contact Us</h1>
-                                                                    <table border="0" width="95%">
+                                                                    <table border="0" width="100%">
                                                                         <tbody>
                                                                         <tr>
-                                                                            <td><img src="http://lejeunenotaries.com/images/phone_sm.jpg"></td>
-                                                                            <td valign="top" id="td-first">If you are in need of our services, or have any questions, please do not hesitate to contact us via phone, fax or email:<p></p>
-                                                                                <table border="0" width="100%" cellspacing="0" cellpadding="0">
-                                                                                    <tbody>
-                                                                                    <tr>
-                                                                                        <td valign="top" width="95%">Notary Services<p></p>
-                                                                                            <ul>
-                                                                                                <li><b>Ron Raynor, Owner/Notary</b><br>
-                                                                                                    703.626.5911 (cell)<br>
-                                                                                                    <a href="mailto:rraynor@lejeunenotaries.com?subject=Notary%20Request%20from%20LejeuneNotaries.com">rraynor@lejeunenotaries.com</a></li>
-                                                                                                <li><b>Christiane Raynor, General Manager/Notary</b><br>
-                                                                                                    410.739.5744 (cell)<br>
-                                                                                                    <a href="mailto:craynor@lejeunenotaries.com?subject=Notary%20Request%20from%20LejeuneNotaries.com">craynor@lejeunenotaries.com</a></li>
-                                                                                            </ul>
-                                                                                            <blockquote><p><b>Mailing Address</b><br>
-                                                                                                    3060 Richlands Hwy Unit C #205<br>
-                                                                                                    Jacksonville, NC 28540</p>
-                                                                                                <p><b>Office Address</b><br>
-                                                                                                    825 Gumbranch Road Suite 104<br>
-                                                                                                    Jacksonville, NC 28540</p>
-                                                                                                <p><b>Office Phones</b><br>
-                                                                                                    910.805.1674</p>
-                                                                                                <p><b>Fax</b><br>
-                                                                                                    919.590.1641</p>
-                                                                                                <p><a href="http://lejeunenotaries.itestwebpageshere.biz/log-in"><b>Submit a Completion Report</b></a></p></blockquote>
-                                                                                        </td>
-                                                                                        <td valign="top" width="5%"></td>
-                                                                                    </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                                            <td><img src="http://lejeunenotaries.com/images/report.jpg"></td>
+                                                                            <td valign="top" id="td-first">
+                                                                                <h3 style="">Signing Completion Report</h3>
+
+                                                                                <form method="POST" action="">
+                                                                                    @csrf
+                                                                                    <div class="form-group row">
+                                                                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                                                                                        <div class="col-md-8">
+                                                                                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+
+                                                                                            @if ($errors->has('email'))
+                                                                                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('email') }}</strong></span>
+                                                                                            @endif
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="form-group row">
+                                                                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Registered ID') }}</label>
+
+                                                                                        <div class="col-md-8">
+                                                                                            <input id="job" type="job" class="form-control{{ $errors->has('job') ? ' is-invalid' : '' }}" name="job" required>
+
+                                                                                            @if ($errors->has('password'))
+                                                                                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('password')}}</strong></span>
+                                                                                            @endif
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-md-6 offset-md-4">
+                                                                                            <div class="form-check">
+                                                                                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                                                                                <label class="form-check-label" for="remember">
+                                                                                                    {{ __('Remember Me') }}
+                                                                                                </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="form-group row mb-0">
+                                                                                        <div class="col-md-8 offset-md-4">
+                                                                                            <button type="submit" class="btn btn-primary login-btn">
+                                                                                                {{ __('Submit') }}
+                                                                                            </button>
+
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </form>
                                                                                 <p align="center">Thank you for your interest in LejeuneNotaries.com.<br>
                                                                                     We look forward to working with you.</p>
                                                                             </td>
