@@ -18,7 +18,7 @@ class SearchController extends Controller
         if($notary) {
             return view('notaries.public', compact('notary'));
         } else {
-            return view('notaries.new');
+            return view('notaries.new', compact('email'));
         }
 
     }

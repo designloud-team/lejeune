@@ -7,9 +7,9 @@
 
     {{--</script>--}}
    {{--<script>document.getElementById("rememberme").checked = true;</script><script type='text/javascript' src='http://lejeunenotaries.itestwebpageshere.biz/wp-content/uploads/bb-plugin/cache/14-layout.js?ver=dbf9727210491b62ef5165d5cc3a7f00'></script>--}}
-    <script type='text/javascript' src='{{asset('/js/jquery.imagesloaded.js?ver=1.10.6.3')}}'></script>
-    <script type='text/javascript' src="{{asset('/js/jquery.throttle.min.js?ver=1.0.1.2')}}"></script>
-    <script type='text/javascript' src="{{asset('/js/60e07e6ef926148341542c1473f564ee-layout-bundle.js')}}"></script>
+    <script type='text/javascript' src='{{asset('/js/jquery.imagesloaded.js')}}'></script>
+    <script type='text/javascript' src="{{asset('/js/jquery.throttle.min.js')}}"></script>
+    <script type='text/javascript' src="{{asset('/js/layout-bundle.js')}}"></script>
     {{--<script type='text/javascript' src='http://lejeunenotaries.itestwebpageshere.biz/wp-content/plugins/bb-plugin/js/jquery.magnificpopup.min.js?ver=1.10.6.3'></script>--}}
     {{--<script type='text/javascript' src='http://lejeunenotaries.itestwebpageshere.biz/wp-content/themes/bb-theme/js/bootstrap.min.js?ver=1.6.1'></script>--}}
     <script type='text/javascript' src="{{asset('/js/theme.min.js')}}"></script>

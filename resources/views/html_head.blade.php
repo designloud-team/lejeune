@@ -15,10 +15,10 @@
     <link rel='dns-prefetch' href='//fonts.googleapis.com' />
     <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
 
-    <link rel='stylesheet' id='fl-builder-layout-14-css' href="{{asset('/css/14-layout.css')}}" type='text/css' media='all' />
-    <link rel='stylesheet' id='fl-builder-layout-bundle-f4e27eb5e9a77d98a6c0edb76f1a8d03-css' href="{{asset('/css/f4e27eb5e9a77d98a6c0edb76f1a8d03-layout-bundle.css')}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='fl-builder-layout-14-css' href="{{asset('/css/layout.css')}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='fl-builder-layout-bundle-css' href="{{asset('/css/layout-bundle.css')}}" type='text/css' media='all' />
     {{--<link rel='stylesheet' id='af-form-style-css' href='http://lejeunenotaries.itestwebpageshere.biz/wp-content/plugins/advanced-forms/assets/css/form.css?ver=4.8.8' type='text/css' media='all' />--}}
-    <link rel='stylesheet' id='fl-builder-google-fonts-4bd36ebc30aa9f610faa00050f4e6e39-css' href='//fonts.googleapis.com/css?family=Merriweather%3A400&#038;ver=4.8.8' type='text/css' media='all' />
+    <link rel='stylesheet' id='fl-builder-google-fonts-css' href='//fonts.googleapis.com/css?family=Merriweather%3A400&#038;ver=4.8.8' type='text/css' media='all' />
     <link rel='stylesheet' id='font-awesome-css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=1.10.6.3' type='text/css' media='all' />
     {{--<link rel='stylesheet' id='mono-social-icons-css' href='http://lejeunenotaries.itestwebpageshere.biz/wp-content/themes/bb-theme/css/mono-social-icons.css?ver=1.6.1' type='text/css' media='all' />--}}
     {{--<link rel='stylesheet' id='jquery-magnificpopup-css' href='http://lejeunenotaries.itestwebpageshere.biz/wp-content/plugins/bb-plugin/css/jquery.magnificpopup.css?ver=1.10.6.3' type='text/css' media='all' />--}}
@@ -33,7 +33,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel='stylesheet' id='fl-automator-skin-css' href={{asset('/css/skin-5c2ac7adb06aa.css')}} type='text/css' media='all' />
+    <link rel='stylesheet' id='fl-automator-skin-css' href={{asset('/css/skin.css')}} type='text/css' media='all' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
     <style type="text/css">

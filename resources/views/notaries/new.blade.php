@@ -31,17 +31,17 @@
                                                                                 <div class="form-group col-md-12" style="">
                                                                                 <div class="form-group col-md-6">
                                                                                     {!! Form::label('state', 'State:', ['class' => 'control-label']) !!}
-                                                                                    {!! Form::select('state', ['Select State' => $states], 'NC',['class' => 'form-control selectpicker']) !!}
+                                                                                    {!! Form::select('state', ['Select State' => $states], 'NC',['class' => 'form-control selectpicker', 'required']) !!}
                                                                                 </div>
 
                                                                                 <div class="form-group col-md-6">
                                                                                     {!! Form::label('first_name', 'First name: *', ['class' => 'control-label']) !!}
-                                                                                    {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
+                                                                                    {!! Form::text('first_name', null, ['class' => 'form-control', 'required']) !!}
                                                                                 </div>
 
                                                                                 <div class="form-group col-md-6">
                                                                                     {!! Form::label('last_name', 'Last name:', ['class' => 'control-label']) !!}
-                                                                                    {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
+                                                                                    {!! Form::text('last_name', null, ['class' => 'form-control', 'required']) !!}
                                                                                 </div>
                                                                                 <div class="form-group col-md-6">
                                                                                     {!! Form::label('business_name', 'Business name:', ['class' => 'control-label']) !!}
@@ -50,15 +50,19 @@
 
                                                                                 <div class="form-group col-md-12">
                                                                                     {!! Form::label('mailing_address', 'Mailing Address:', ['class' => 'control-label']) !!}
-                                                                                    {!! Form::text('mailing_address', null, ['class' => 'form-control']) !!}
+                                                                                    {!! Form::text('mailing_address', null, ['class' => 'form-control', 'required',  'id' => 'mailing_address']) !!}
+                                                                                </div>
+                                                                                <div class="form-group col-md-12">
+                                                                                    {!! Form::label('same_as_mailing', 'Delivery same as Mailing address?', ['class' => 'control-label']) !!}
+                                                                                    {!! Form::checkbox('same_as_mailing', 0, null, ['class' => 'form-control', 'id' => 'same_as_mailing']) !!}
                                                                                 </div>
                                                                                 <div class="form-group col-md-12">
                                                                                     {!! Form::label('delivery_address', 'Delivery Address:', ['class' => 'control-label']) !!}
-                                                                                    {!! Form::text('delivery_address', null, ['class' => 'form-control']) !!}
+                                                                                    {!! Form::text('delivery_address', null, ['class' => 'form-control', 'id' => 'delivery_address' ]) !!}
                                                                                 </div>
                                                                                 <div class="form-group col-md-6">
                                                                                     {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
-                                                                                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                                                                    {!! Form::text('email', $email? $email: '', ['class' => 'form-control']) !!}
                                                                                 </div>
                                                                                 <div class="form-group col-md-6">
                                                                                     {!! Form::label('phone', 'Phone:', ['class' => 'control-label']) !!}
@@ -77,15 +81,15 @@
                                                                                 </div>
                                                                                 <div class="form-group col-md-12" style="">
                                                                                     <label>
-                                                                                        {!! Form::checkbox('e_docs', null, ['class' => 'form-control']) !!}  Do you use E Docs?
+                                                                                        {!! Form::checkbox('e_docs', 0, null, ['class' => 'form-control']) !!}  Do you use E Docs?
                                                                                     </label>
                                                                                 </div>
                                                                                 <div class="form-group col-md-12" style="">
                                                                                     <label>
-                                                                                        {!! Form::checkbox('insurance', null, ['class' => 'form-control']) !!}  Do you have insurance?
+                                                                                        {!! Form::checkbox('insurance', 0, null, ['class' => 'form-control', 'id' => 'insurance']) !!}  Do you have insurance?
                                                                                     </label>
                                                                                 </div>
-                                                                                <div class="form-group col-md-6">
+                                                                                <div class="form-group col-md-6" id="insurance_amount">
                                                                                     {!! Form::label('insurance_amount', 'Insurance Amount:', ['class' => 'control-label']) !!}
                                                                                     {!! Form::text('insurance_amount', null, ['class' => 'form-control']) !!}
                                                                                 </div>
@@ -111,6 +115,7 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -118,4 +123,29 @@
     </div>
 
 @endsection
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#same_as_mailing').on('ifChecked', function (e) {
+            // if($(this).is(':checked')) {
+                $('#delivery_address').val($('#mailing_address').val());
+            // }
+        })
+        $('#same_as_mailing').on('ifUnchecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#delivery_address').val('');
+            // }
+        })
+        $('#insurance_amount').css('display', 'none');
+        $('#insurance').on('ifChecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#insurance_amount').css('display', 'block');
+            // }
+        })
+        $('#insurance').on('ifUnchecked', function (e) {
+            // if($(this).is(':checked')) {
+            $('#insurance_amount').css('display', 'none');
+            // }
+        })
+    })
+</script>
