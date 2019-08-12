@@ -24,6 +24,8 @@ jQuery(document).ready(function($){
 });
 
 jQuery(document).ready(function($){
+    var rows_selected = [];
+
     var url = "{!! route('notaries.data', ['index']) !!}";
     var table_selector = '.tbl-notaries';
     var table =  $('.table');
@@ -34,7 +36,7 @@ jQuery(document).ready(function($){
         processing: true,
         serverSide: true,
         "ajax": {
-            "url": url,
+            "url": "{!! route('notaries.data', ['index']) !!}",
             "data": function ( d ) {
                 return $.extend( {}, d, {
                     "status": $('#status').val()
@@ -47,10 +49,9 @@ jQuery(document).ready(function($){
                 defaultContent: '',
                 orderable: false
             },
-            { data: 'name', name: 'Name' },
-            { data: 'business_name', name: 'Business' },
+            { data: 'name', name: 'Notary' },
             { data: 'state', name: 'State' },
-            {data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
+            { data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
         ],
         columnDefs: [
             {
@@ -103,6 +104,21 @@ jQuery(document).ready(function($){
             return nRow;
         }
     });
+    $('#select-all').on('click', function () {
+        // Get all rows with search applied
+        var rows = oTable.api().rows({'search': 'applied'}).data();
+        rows_selected = [];
+
+        if (this.checked)
+            $.each(rows, function (index, row) {
+                rows_selected.push(row.id);
+            });
+
+    });
+    $(table_selector).on('click', 'tbody tr td:not(:first-child,:last-child)', function () {
+        var path = $(this).parent('tr').data('href');
+        window.location = path;
+    });
 
 
     $('.dataTables_filter input[type="search"]').addClass('form-control').closest('label').attr('style', 'float:right!important'); // <-- add this line
@@ -113,9 +129,6 @@ jQuery(document).ready(function($){
         if (rows_selected.length == 0) {
             toastr["error"]('Oops! you did not select any record ');
             return false;
-        } else if ($('#actions').val() == "edit") {
-            $("#editModal").modal("show");
-            $("#editModal").find("#client-count").text(rows_selected.length);
 
         } else if ($('#actions').val() == "delete") {
 
@@ -161,19 +174,8 @@ jQuery(document).ready(function($){
         oTable.fnDraw();
     });
 
-    $('#select-all').on('click', function () {
-        // Get all rows with search applied
-        var rows = oTable.api().rows({'search': 'applied'}).data();
-        rows_selected = [];
 
-        if (this.checked)
-            $.each(rows, function (index, row) {
-                rows_selected.push(row.id);
-            });
-
-    });
-
-    $(".notaries tbody").on('click', 'input[type="checkbox"]', function (e) {
+    $(".tbl-notaries tbody").on('click', 'input[type="checkbox"]', function (e) {
         var $row = $(this).closest('tr');
 
         // Get row data

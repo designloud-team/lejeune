@@ -87,8 +87,11 @@ class NotaryController extends Controller
     {
         //
         $notary = Notary::find($id);
+        $jobs = $notary->jobs;
+        $invoices = $notary->invoices;
+        $reports = $notary->reports;
 
-        return view('notaries.show', compact('notary'));
+        return view('notaries.show', compact('notary','jobs', 'invoices', 'reports'));
     }
 
     /**
@@ -102,7 +105,7 @@ class NotaryController extends Controller
         //
         $notary = Notary::find($id);
 
-        return view('notaries.show', compact('notary'));
+        return view('notaries.edit', compact('notary'));
     }
 
     /**
@@ -117,7 +120,6 @@ class NotaryController extends Controller
         //
         $data = $request->all();
 
-        dd($data);
         $notary = Notary::find($id);
 
         $notary->update($data);
@@ -138,7 +140,22 @@ class NotaryController extends Controller
 
         $status = $notary->delete();
 
-        return $status == 1? true : false;
+        return response()->json([
+            'success' => $status >= 1 ? 'true' : 'false',
+        ]);
+    }
+    public function destroyAll(Request $request)
+    {
+        $this->validate($request, ["notaries" => "required|array"]);
+
+        $ids = $request->get("notaries");
+        $status = Notary::destroy($ids);
+
+        return response()->json([
+            'success' => $status >= 1 ? 'true' : 'false',
+        ]);
+
+
     }
     public function getDatatablesData($type, Request $request)
     {
@@ -156,12 +173,13 @@ class NotaryController extends Controller
 
         $query = Notary::all();
 
-        return Datatables::of($query)
+
+        return DataTables::of($query)
             ->addColumn('hash_id', function ($result) {
                 return $result->hash_id;
             })
-            ->addColumn('name', function ($notary) {
-                return $notary->first_name." ".$notary->last_name;
+            ->editColumn('name', function ($notary) {
+                return ($notary->business_name ? $notary->business_name .', ': '') . $notary->first_name." ".$notary->last_name;
 
             })
             ->addColumn('actions', function ($notary) {

@@ -91,8 +91,9 @@ class CustomerController extends Controller
     {
         //
         $customer = Customer::find($id);
-
-        return view('customers.show', compact('customer'));
+        $jobs = $customer->jobs;
+        $invoices = $customer->invoices;
+        return view('customers.show', compact('customer', 'invoices', 'jobs'));
     }
 
     /**
@@ -141,11 +142,26 @@ class CustomerController extends Controller
 
         $status = $customer->delete();
         if(request()->ajax())
-        return $status == 1? 'true' : 'false';
+        return response()->json([
+            'success' => $status >= 1 ? 'true' : 'false',
+        ]);
 
         Session::flash('flash_message', 'Customer Successfully Deleted');
 
         return redirect()->to('customers') ;
+
+
+    }
+    public function destroyAll(Request $request)
+    {
+        $this->validate($request, ["customers" => "required|array"]);
+
+        $ids = $request->get("customers");
+        $status = Customer::destroy($ids);
+
+        return response()->json([
+            'success' => $status >= 1 ? 'true' : 'false',
+        ]);
 
 
     }

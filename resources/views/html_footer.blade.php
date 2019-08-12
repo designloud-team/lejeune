@@ -13,6 +13,8 @@
     {{--<script type='text/javascript' src='http://lejeunenotaries.itestwebpageshere.biz/wp-content/plugins/bb-plugin/js/jquery.magnificpopup.min.js?ver=1.10.6.3'></script>--}}
     {{--<script type='text/javascript' src='http://lejeunenotaries.itestwebpageshere.biz/wp-content/themes/bb-theme/js/bootstrap.min.js?ver=1.6.1'></script>--}}
     <script type='text/javascript' src="{{asset('/js/theme.min.js')}}"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" integrity="sha256-egVvxkq6UBCQyKzRBrDHu8miZ5FOaVrjSqQqauKglKc=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" integrity="sha256-3blsJd4Hli/7wCQ+bmgXfOdK7p/ZUMtPXY08jmxSSgk=" crossorigin="anonymous"></script>
     {{--<script type='text/javascript' src='http://lejeunenotaries.itestwebpageshere.biz/wp-includes/js/wp-embed.min.js?ver=4.8.8'></script>--}}
    <script type="text/javascript">
     $(document).ready(function () {
@@ -59,6 +61,12 @@
            $('input[type="radio"]').iCheck({
                radioClass: 'iradio_minimal-red'
            });
+
+
+           $(function () {
+               $('[data-toggle="tooltip"]').tooltip()
+           })
+
 
            // $('button[type="submit"]').click(function () {
                $('form').bind('submit', function () {

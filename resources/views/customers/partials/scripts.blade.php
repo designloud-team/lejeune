@@ -128,10 +128,6 @@ jQuery(document).ready(function($){
         if (rows_selected.length == 0) {
             toastr["error"]('Oops! you did not select any record ');
             return false;
-        } else if ($('#actions').val() == "edit") {
-            $("#editModal").modal("show");
-            $("#editModal").find("#client-count").text(rows_selected.length);
-
         } else if ($('#actions').val() == "delete") {
 
             swal({
@@ -168,7 +164,6 @@ jQuery(document).ready(function($){
             });
         }
 
-
     });
 
     $(".tbl-customers tbody").on('click', 'input[type="checkbox"]', function (e) {
@@ -198,6 +193,42 @@ jQuery(document).ready(function($){
         }
 
         e.stopPropagation();
+    });
+    $('.table').on('click', '.customer-delete', function(e){
+        e.preventDefault();
+
+        tr = $(this).closest('tr');
+        var customerId = $(this).attr('data-id');
+
+        swal({
+            showLoaderOnConfirm: true,
+            title: "Are you sure?",
+            text: "This customer will be deleted permanently from this system!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#007AFF",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function() {
+            $.ajax({
+                url:  '{{ str_replace('-1','',route('customers.destroy',-1))  }}'+customerId,
+                headers: { 'X-XSRF-TOKEN' : '{{\Illuminate\Support\Facades\Crypt::encrypt(csrf_token())}}' },
+                error: function() {
+                    swal("Cancelled", "{{trans('customers.index.delete_unable')}}", "error");
+                },
+                success: function(response) {
+                    if(response.success == 'true'){
+                        tr.remove();
+                        swal("{{trans('customers.index.delete_validation')}}", "{{trans('customers.index.delete_msg')}}", "success");
+                    }else{
+                        swal("Cancelled", "{{trans('customers.index.delete_unable')}}", "error");
+                    }
+                },
+
+                type: 'DELETE'
+            });
+        });
+
     });
 });
 </script>

@@ -94,7 +94,6 @@
                             <div class="col-xs-10">
                                 <select name="actions" id="actions" class="form-control">
                                     <option selected disabled>Actions</option>
-                                    <option value="edit">Edit all</option>
                                     <option value="delete">Delete all</option>
                                 </select>
                             </div>
@@ -108,8 +107,7 @@
                             <thead>
                             <tr>
                                 <th></th>
-                                <th>Name</th>
-                                <th>Business</th>
+                                <th>Notary</th>
                                 <th>State</th>
                                 <th>Actions</th>
                             </tr>
