@@ -69,14 +69,7 @@ Click the help icon above to learn more.
 
         header .fl-module-menu {background-color: #E8D9B5;}
 
-        #menu-main-menu li:hover a:after {
-            z-index: 5000;
-            width: 20px;
-            position: absolute;
-            top:12px;
-            left:10px;
-            content: url(/uploads/2019/01/red-1.png);
-        }
+
         .pagination {
             margin: 0 0 0 35%!important;
         }
@@ -228,6 +221,14 @@ Click the help icon above to learn more.
             background-color: black;
             color: #fff;
         }
+            #menu-main-menu li:hover a:after, #menu-main-menu li.active a:after {
+                z-index: 5000;
+                width: 20px;
+                position: absolute;
+                top:12px;
+                left:10px;
+                content: url(/uploads/2019/01/red-1.png);
+            }
         }
     </style>
     {{--<script>--}}
