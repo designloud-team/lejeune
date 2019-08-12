@@ -92,6 +92,11 @@
                                     {!! Form::label('ssn_or_ein', 'SSN or EIN:', ['class' => 'control-label']) !!}
                                     {!! Form::text('ssn_or_ein', null, ['class' => 'form-control']) !!}
                                 </div>
+                                <div class="form-group col-md-12">
+                                    {!! Form::label('notes', 'Notes:', ['class' => 'control-label']) !!}
+                                    {!! Form::textarea('notes', null, ['class' => 'form-control']) !!}
+                                </div>
+
                             </div>
                         </div><!-- /.box-body -->
                 <div class="form-group col-md-12">

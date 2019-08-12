@@ -1,6 +1,7 @@
 @extends('admin_template')
 @push('styles')
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="{{ asset('/css/DT_bootstrap.css') }}" rel="stylesheet" media="screen">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css" />
@@ -11,9 +12,6 @@
             padding: 6px 5px;
             font-size: 12px;
             color: #ccc;
-        }
-        table.dataTable thead .sorting:after , table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after{
-            content: none  !important;
         }
         .table-btn button {
             border: 0;

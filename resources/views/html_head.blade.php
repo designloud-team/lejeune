@@ -77,6 +77,13 @@ Click the help icon above to learn more.
             left:10px;
             content: url(/uploads/2019/01/red-1.png);
         }
+        .pagination {
+            margin: 0 0 0 35%!important;
+        }
+        .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+        background-color: #821a1a!important;
+        border-color: #821a1a!important;
+        }
         @media (min-width:768px) {
             #menu-main-menu {background-color: #E8D9B5;padding:10px 0 0 0;}
 
@@ -212,7 +219,7 @@ Click the help icon above to learn more.
             }
             .alert-danger {
                 color:#821a1a;
-                background: #E8D9B5;
+                background: #E8D9B5!important;
                 font-size: 18px;
                 font-weight: 700;
 

@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\CSVtoSQL;
+use App\Customer;
+use Excel;
+use Session;
+use Auth;
 use App\Notary;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -73,8 +78,10 @@ class NotaryController extends Controller
             $data['delivery_address'] = $data['mailing_address'];
         }
         $notary = Notary::create($data);
-
-        return view('notaries.show', compact('notary'));
+        $jobs = [];
+        $invoices = [];
+        $reports = [];
+        return view('notaries.show', compact('notary','jobs', 'invoices', 'reports'));
     }
 
     /**
@@ -87,6 +94,7 @@ class NotaryController extends Controller
     {
         //
         $notary = Notary::find($id);
+
         $jobs = $notary->jobs;
         $invoices = $notary->invoices;
         $reports = $notary->reports;
@@ -104,8 +112,10 @@ class NotaryController extends Controller
     {
         //
         $notary = Notary::find($id);
-
-        return view('notaries.edit', compact('notary'));
+        $jobs = $notary->jobs;
+        $invoices = $notary->invoices;
+        $reports = $notary->reports;
+        return view('notaries.edit', compact('notary','jobs', 'invoices', 'reports'));
     }
 
     /**
@@ -123,8 +133,11 @@ class NotaryController extends Controller
         $notary = Notary::find($id);
 
         $notary->update($data);
+        $jobs = $notary->jobs;
+        $invoices = $notary->invoices;
+        $reports = $notary->reports;
 
-        return view('notaries.show', compact('notary'));
+        return view('notaries.show', compact('notary','jobs', 'invoices', 'reports'));
     }
 
     /**
@@ -175,6 +188,12 @@ class NotaryController extends Controller
 
 
         return DataTables::of($query)
+//            ->filterColumn(function ($query, $keyword){
+//                return $query->where('state', 'like', '%'.$keyword.'%')
+//                     ->orWhere('business_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('first_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('last_name', 'like', '%'.$keyword.'%');
+//            })
             ->addColumn('hash_id', function ($result) {
                 return $result->hash_id;
             })
@@ -187,6 +206,111 @@ class NotaryController extends Controller
             })
             ->rawColumns(['actions'])
             ->make(true);
+    }
+    /**
+     * File Export Code
+     *
+     * @var array
+     */
+    public function downloadExcel(Request $request, $type)
+    {
+        $data = Notary::select(
+            'local',
+            'state',
+            'first_name',
+            'last_name',
+            'business_name',
+            'mailing_address',
+            'delivery_address',
+            'email',
+            'phone',
+            'alternate_phone',
+            'fax',
+            'website',
+            'e_docs',
+            'insurance',
+            'insurance_amount',
+            'ssn_or_ein',
+            'notes')
+            ->get()
+            ->toArray();
+
+//        unset($data[0]['id']);
+//        unset($data[0]['company_id']);
+
+        return Excel::create('notaries_export', function ($excel) use ($data) {
+            $excel->sheet('notaries', function ($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->download($type);
+    }
+    public function importExcel(Request $request)
+    {
+
+        if ($request->hasFile('import_file')) {
+            $path = $request->file('import_file')->getRealPath();
+            $csv = new CSVtoSQL($path);
+            $csv->readDataIn();
+            $columns = $csv->getTableColumns('notaries');
+
+            $array = [];
+
+            foreach ($columns as $value) {
+
+                array_push($array, $value->Field);
+
+            }
+            $array = array_where($array, function ($value, $key) {
+
+                $cols = ['id', 'user_id', 'created_at', 'updated_at', 'deleted_at'];
+
+                return !in_array($value, $cols);
+            });
+
+
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+
+            if (!empty($data) && $data->count()) {
+
+                foreach ($data->toArray() as $key => $value) {
+
+                    if(!empty($value)){
+                        //foreach ($value as $k => $v) {
+                        $insert[] = [
+                            'local' => $value['local']?$value['local']:0,
+                            'state' => $value['state'],
+                            'first_name' => $value['first_name'],
+                            'last_name' => $value['last_name'],
+                            'business_name' => $value['business_name'],
+                            'mailing_address' => $value['mailing_address'],
+                            'delivery_address' => $value['delivery_address'],
+                            'email' => $value['email'],
+                            'phone' => $value['phone'],
+                            'alternate_phone' => $value['alternate_phone'],
+                            'fax' => $value['fax'],
+                            'website' => $value['website'],
+                            'e_docs' => $value['e_docs']?$value['e_docs']:0,
+                            'insurance' => $value['insurance']?$value['insurance']:0,
+                            'insurance_amount' => $value['insurance_amount'],
+                            'ssn_or_ein' => $value['ssn_or_ein'],
+                            'notes' => $value['notes'],
+                            'user_id' => Auth::user()->id,
+                        ];
+                        //}
+                    }
+                }
+                if(!empty($insert)){
+                    foreach($insert as $notary){
+                        Notary::create($notary);
+                    }
+                    Session::flash('flash_message', 'Import Successful!');
+                    return back();
+                }
+            }
+        }
+        return back()->with('error','Please Check your file, Something is wrong there.');
+
     }
 
 }

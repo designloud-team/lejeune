@@ -97,6 +97,10 @@
                                         {!! Form::label('ssn_or_ein', 'SSN or EIN:', ['class' => 'control-label']) !!}
                                         {!! Form::text('ssn_or_ein', $notary->ssn_or_ein, ['class' => 'form-control']) !!}
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        {!! Form::label('notes', 'Notes:', ['class' => 'control-label']) !!}
+                                        {!! Form::textarea('notes', $notary->notes, ['class' => 'form-control']) !!}
+                                    </div>
                                 </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

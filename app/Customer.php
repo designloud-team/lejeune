@@ -24,10 +24,12 @@ class Customer extends Model
         'website',
         'billing_address',
         'shipping_address',
-        'user_id'
     ];
 
-    protected $hidden = [];
+    protected $hidden = [
+        'user_id'
+
+    ];
 
     protected $dates = ['deleted_at'];
 

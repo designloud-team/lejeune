@@ -1,5 +1,7 @@
 @extends('errors::illustrated-layout')
+<style>
 
+</style>
 @section('code', '404')
 @section('title', __('Page Not Found'))
 

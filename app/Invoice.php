@@ -12,7 +12,7 @@ class Invoice extends Model
 //    use Searchable;
     //
     protected $fillable = [
-        'registered_id',
+//        'registered_id',
         'borrower',
         'coborrower',
         'daytime_phone',
@@ -25,14 +25,13 @@ class Invoice extends Model
         'local',
         'notary_fee',
         'status',
-        'customer_id',
-        'notary_id',
-        'user_id'
     ];
 
     protected $hidden = [
+        'job_id',
         'customer_id',
-        'notary_id'
+        'notary_id',
+        'user_id'
     ];
 
     protected $dates = ['deleted_at'];

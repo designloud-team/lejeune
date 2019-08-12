@@ -24,14 +24,13 @@ class Job extends Model
         'local',
         'notary_fee',
         'status',
-        'customer_id',
-        'notary_id',
-        'user_id'
+
     ];
 
     protected $hidden = [
         'customer_id',
-        'notary_id'
+        'notary_id',
+        'user_id'
     ];
 
     protected $dates = ['deleted_at'];

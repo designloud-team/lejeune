@@ -165,7 +165,11 @@ return [
         /*
          * Package Service Providers...
          */
+        //Import/Export from Excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
+        //Breadcrumbs
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -194,6 +198,7 @@ return [
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
@@ -202,6 +207,7 @@ return [
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DB' => Illuminate\Support\Facades\DB::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,

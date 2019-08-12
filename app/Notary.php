@@ -33,7 +33,7 @@ class Notary extends Model
         'notes'
     ];
 
-    protected $hidden = [];
+    protected $hidden = ['user_id'];
     protected $table = 'notaries';
 
     protected $dates = ['deleted_at'];

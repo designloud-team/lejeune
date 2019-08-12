@@ -37,6 +37,13 @@
         /*-moz-box-shadow:  5px 12px 18px -6px rgba(0,0,0,0.3)!important;*/
         /*box-shadow: 5px 12px 18px -6px rgba(0,0,0,0.3)!important;*/
     }
+    .alert.alert-danger {
+        background-color:#821a1a!important;
+        color: #E8D9B5!important;
+        font-size: 18px;
+        font-weight: 700;
+
+    }
 </style>
 @section('content')
     <div class="fl-page-content" itemprop="mainContentOfPage">
@@ -83,29 +90,29 @@
                                                                         </div>
                                                                         <div class="form-group col-md-4">
                                                                             {!! Form::label('phone', 'Phone', ['class' => 'control-label'])  !!}
-                                                                            {!! Form::text('phone',null,['class' => 'form-control','placeholder'=> 'Your phone']); !!}
+                                                                            {!! Form::text('phone',null,['class' => 'form-control','placeholder'=> 'Your phone','required']); !!}
                                                                         </div>
                                                                         <div class="form-group col-md-8">
                                                                             {!! Form::label('service_address', 'Location of Signing', ['class' => 'control-label'])  !!}
-                                                                            {!! Form::text('service_address',null,['class' => 'form-control','placeholder'=> 'Signing Address']); !!}
+                                                                            {!! Form::text('service_address',null,['class' => 'form-control','placeholder'=> 'Signing Address', 'required']); !!}
                                                                         </div>
                                                                         <div class="form-group col-md-2">
                                                                             {!! Form::label('service_date', 'Date Needed', ['class' => 'control-label'])  !!}
-                                                                            {!! Form::date('service_date',null,['class' => 'form-control']); !!}
+                                                                            {!! Form::date('service_date',null,['class' => 'form-control', 'required']); !!}
                                                                         </div>
                                                                         <div class="form-group col-md-2">
                                                                             {!! Form::label('service_time', 'Time Needed', ['class' => 'control-label'])  !!}
-                                                                            {!! Form::time('service_time',null,['class' => 'form-control']); !!}
+                                                                            {!! Form::time('service_time',null,['class' => 'form-control', 'required']); !!}
                                                                         </div>
                                                                         <h4 class="underline">To help us serve you better, please provide the following information
                                                                             (Optional)</h4>
                                                                         <div class="form-group col-md-2">
                                                                             {!! Form::label('people', 'No. of People', ['class' => 'control-label'])  !!}
-                                                                            {!! Form::number('people',1,['class' => 'form-control','placeholder'=> '1-100', 'min'=> '1', 'max'=> '100']); !!}
+                                                                            {!! Form::number('people',1,['class' => 'form-control','placeholder'=> '1-100', 'min'=> '1', 'max'=> '100','required']); !!}
                                                                         </div>
                                                                         <div class="form-group col-md-2">
                                                                             {!! Form::label('packages', 'No. of Packages', ['class' => 'control-label'])  !!}
-                                                                            {!! Form::number('packages',1,['class' => 'form-control','placeholder'=> '1-100', 'min'=> '1', 'max'=> '100']); !!}
+                                                                            {!! Form::number('packages',1,['class' => 'form-control','placeholder'=> '1-100', 'min'=> '1', 'max'=> '100','required']); !!}
                                                                         </div>
                                                                         <div class="form-group col-md-4">
                                                                             {!! Form::label('service','Service',['class' => 'control-label']); !!}

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\CSVtoSQL;
 use App\Customer;
 use App\Repositories\CustomerRepository;
 use Auth;
+use Excel;
 use Session;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -195,4 +197,94 @@ class CustomerController extends Controller
             ->rawColumns(['actions'])
             ->make(true);
     }
+    /**
+     * File Export Code
+     *
+     * @var array
+     */
+    public function downloadExcel(Request $request, $type)
+    {
+        $data = Customer::select(
+            'company',
+            'name',
+            'phone_number',
+            'mobile',
+            'email',
+            'display_name',
+            'website',
+            'billing_address',
+            'shipping_address')
+            ->get()
+            ->toArray();
+
+//        unset($data[0]['id']);
+//        unset($data[0]['company_id']);
+
+        return Excel::create('customers_export', function ($excel) use ($data) {
+            $excel->sheet('customers', function ($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->download($type);
+    }
+    public function importExcel(Request $request)
+    {
+
+        if ($request->hasFile('import_file')) {
+            $path = $request->file('import_file')->getRealPath();
+            $csv = new CSVtoSQL($path);
+            $csv->readDataIn();
+            $columns = $csv->getTableColumns('customers');
+
+            $array = [];
+
+            foreach ($columns as $value) {
+
+                array_push($array, $value->Field);
+
+            }
+            $array = array_where($array, function ($value, $key) {
+
+                $cols = ['id', 'user_id', 'created_at', 'updated_at', 'deleted_at', 'use_display_name'];
+
+                return !in_array($value, $cols);
+            });
+
+
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+
+            if (!empty($data) && $data->count()) {
+
+                        foreach ($data->toArray() as $key => $value) {
+
+                            if(!empty($value)){
+                                //foreach ($value as $k => $v) {
+                                $insert[] = [
+                                    'company' => $value['company'],
+                                    'name' => $value['name'],
+                                    'phone_number' => $value['phone_number'],
+                                    'mobile' => $value['mobile'],
+                                    'email' => $value['email'],
+                                    'display_name' => $value['display_name'],
+                                    'website' => $value['website'],
+                                    'billing_address' => $value['billing_address'],
+                                    'shipping_address' => $value['shipping_address'],
+                                    'user_id' => Auth::user()->id,
+                                ];
+                                //}
+                            }
+                        }
+                        if(!empty($insert)){
+                            foreach($insert as $customer){
+                                Customer::create($customer);
+                            }
+                            Session::flash('flash_message', 'Import Successful!');
+                            return back();
+                        }
+                    }
+                }
+                return back()->with('error','Please Check your file, Something is wrong there.');
+
+            }
+
 }

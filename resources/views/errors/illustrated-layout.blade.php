@@ -447,6 +447,9 @@
             .md\:w-1\/2 {
                 width: 50%;
             }
+            .bg-red-light {
+                background-color: #821a1a;
+            }
         }
 
         @media (min-width: 992px) {
@@ -464,7 +467,7 @@
                         @yield('code', __('Oh no'))
                     </div>
 
-                    <div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
+                    <div class="w-16 h-1 bg-red-light my-3 md:my-6"></div>
 
                     <p class="text-grey-darker text-2xl md:text-3xl font-light mb-8 leading-normal">
                         @yield('message')

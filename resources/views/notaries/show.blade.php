@@ -54,9 +54,12 @@
                             <p><strong>Fax: </strong>{{ $notary->fax }}</p>
                             <p><strong>Mailing: </strong>{{ $notary->mailing_address }}</p>
                             <p><strong>Deliver: </strong>{{ $notary->delivery_address }}</p>
+                            <p><strong>Notes: </strong>{{ $notary->notes }}</p>
+
                         </div>
                     </div>
                 </div>
+
             </div>
             @if($jobs->count() || $invoices->count() || $reports->count() )
 

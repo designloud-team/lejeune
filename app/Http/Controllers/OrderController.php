@@ -60,6 +60,7 @@ class OrderController extends Controller
         $user->notify(new NewOrder($order));
 
         Session::flash('flash_message', 'Order Received');
+
         return redirect()->back();
     }
 
