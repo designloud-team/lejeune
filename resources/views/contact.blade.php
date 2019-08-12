@@ -39,9 +39,9 @@
                                                                                                 <li><b>Ron Raynor, Owner/Notary</b><br>
                                                                                                     703.626.5911 (cell)<br>
                                                                                                     <a href="mailto:rraynor@lejeunenotaries.com?subject=Notary%20Request%20from%20LejeuneNotaries.com">rraynor@lejeunenotaries.com</a></li>
-                                                                                                <li><b>Christiane Raynor, General Manager/Notary</b><br>
-                                                                                                    410.739.5744 (cell)<br>
-                                                                                                    <a href="mailto:craynor@lejeunenotaries.com?subject=Notary%20Request%20from%20LejeuneNotaries.com">craynor@lejeunenotaries.com</a></li>
+{{--                                                                                                <li><b>Christiane Raynor, General Manager/Notary</b><br>--}}
+{{--                                                                                                    410.739.5744 (cell)<br>--}}
+{{--                                                                                                    <a href="mailto:craynor@lejeunenotaries.com?subject=Notary%20Request%20from%20LejeuneNotaries.com">craynor@lejeunenotaries.com</a></li>--}}
                                                                                             </ul>
                                                                                             <blockquote><p><b>Mailing Address</b><br>
                                                                                                     3060 Richlands Hwy Unit C #205<br>
