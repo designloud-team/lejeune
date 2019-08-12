@@ -16,7 +16,7 @@ class PublicController extends Controller
         switch($request->path()) {
             case 'about':
                 return view('about');
-            case 'orders':
+            case 'order':
                 return view('orders');
             case 'services':
                 return view('services');

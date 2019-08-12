@@ -62,10 +62,24 @@
                radioClass: 'iradio_minimal-red'
            });
 
-
            $(function () {
                $('[data-toggle="tooltip"]').tooltip()
            })
+
+
+           // $(function () {
+           //     var location = window.location;
+           //     $('#menu-main-menu li a').each(function () {
+           //         if($(this).prop('href') === location) {
+           //             alert($(this))
+           //             $(this).parent('li').addClass('current-menu-item current_page_item active')
+           //         } else {
+           //             $(this).parent('li').removeClass('current-menu-item current_page_item active')
+           //
+           //         }
+           //     })
+           //
+           // });
 
 
            // $('button[type="submit"]').click(function () {

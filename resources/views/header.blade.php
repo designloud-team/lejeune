@@ -25,7 +25,7 @@
                                         <ul id="menu-main-menu" class="menu fl-menu-horizontal fl-toggle-none"><li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-14 current_page_item"><a href="{{url('/')}}">Home</a></li>
                                             <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('/about')}}">About Us</a></li>
                                             <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('/services')}}">Our Services</a></li>
-                                            <li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('/orders')}}">Order Online</a></li>
+                                            <li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('/order')}}">Order Online</a></li>
                                             <li id="menu-item-34" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('/notary-registration')}}">Notary Registration</a></li>
                                             <li id="menu-item-336" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{url('/contact')}}">Contact Us</a></li>
                                         </ul></div> </div>

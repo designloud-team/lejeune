@@ -14,9 +14,9 @@
 Route::get('/','PublicController@getpage');
 Route::get('about', 'PublicController@getpage');
 Route::get('services', 'PublicController@getpage');
-Route::get('orders', 'PublicController@getpage');
-Route::post('orders', ['uses'=> 'OrderController@store']);
-Route::get('orders/{id}/pdf', ['as'=>'order.pdf','uses'=> 'OrderController@pdf']);
+Route::get('order', 'PublicController@getpage');
+Route::post('order', ['uses'=> 'OrderController@store']);
+Route::get('order/{id}/pdf', ['as'=>'order.pdf','uses'=> 'OrderController@pdf']);
 Route::get('notary-registration','PublicController@getpage');
 Route::get('contact', 'PublicController@getpage');
 Route::get('notaries/{id}/verify', 'PublicController@verify');
@@ -88,6 +88,7 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::post( '/importExcel', ['as'=>'orders.importExcel', 'uses'=>'OrderController@importExcel'] );
         Route::get( '/data/{type}', ['as'=>'orders.data', 'uses'=>'OrderController@getDatatablesData'] );
 //            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
+
     });
 
 
