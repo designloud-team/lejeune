@@ -93,9 +93,7 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::get('/{id}/pdf', ['as'=>'order.pdf','uses'=> 'OrderController@pdf']);
     });
 
-
-
-
 });
 
 Auth::routes();
+Route::get('logs', '\Melihovv\LaravelLogViewer\LaravelLogViewerController@index');
