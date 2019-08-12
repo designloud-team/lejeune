@@ -68,7 +68,8 @@
                         {{--<a href="javascript:history.back()" class="btn btn-primary">Back</a>--}}
 
                         <div width="862" background="{{asset('/img/paper2.jpg')}}" height="600" class="padded" valign="top">
-                            <p id="tick2" class="pull-right" style="font-size:12px;color:#800000">Today is {{date('F j, Y')}} <span id="clock"></span></p>
+                            <span id="tick2" class="pull-left" style="font-size:12px;color:#800000"><a href="/orders"> {{new_orders() > 0 ? ' You have '. new_orders() . ' New Orders!': 'No New Orders.'}}</a></span>
+                            <span id="tick2" class="pull-right" style="font-size:12px;color:#800000">Today is {{date('F j, Y')}} <span id="clock"></span></span>
                         </div>
 
                         <div class="col-md-12" style="margin:1% auto; text-align: center">

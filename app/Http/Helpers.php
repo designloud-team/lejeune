@@ -17,3 +17,14 @@ if(!function_exists('convert_to_date')) {
         return $date;
     }
 }
+if(!function_exists('new_orders')) {
+    function new_orders(){
+        $orders = \App\Order::all();
+        $count = 0;
+        foreach ($orders as $order)
+        if($order->is_new){
+            $count++;
+        }
+        return $count;
+    }
+}

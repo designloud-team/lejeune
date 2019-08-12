@@ -77,6 +77,18 @@ Route::group(array('middleware'=> 'auth'), function (){
             Route::get( '/data/{type}', ['as'=>'notaries.data', 'uses'=>'NotaryController@getDatatablesData'] );
 //            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
     });
+    Route::group( ['prefix' => 'orders'], function() {
+        Route::get( '/', ['as'=>'orders.index', 'uses'=>'OrderController@index'] );
+        Route::get( '/{id}', ['as'=>'orders.show', 'uses'=>'OrderController@show'] );
+        Route::get( '/{id}/edit', ['as'=>'orders.edit', 'uses'=>'OrderController@edit'] );
+        Route::patch( '/{id}', ['as'=>'orders.update', 'uses'=>'OrderController@update'] );
+        Route::delete( '/{id}', ['as'=>'orders.destroy', 'uses'=>'OrderController@destroy'] );
+        Route::post( '/destroy-all', ['as'=>'orders.destroy-all', 'uses'=>'OrderController@destroyAll'] );
+        Route::get( '/downloadExcel/{type}', ['as'=>'orders.downloadExcel', 'uses'=>'OrderController@downloadExcel'] );
+        Route::post( '/importExcel', ['as'=>'orders.importExcel', 'uses'=>'OrderController@importExcel'] );
+        Route::get( '/data/{type}', ['as'=>'orders.data', 'uses'=>'OrderController@getDatatablesData'] );
+//            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
+    });
 
 
 

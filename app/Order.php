@@ -16,13 +16,16 @@ class Order extends Model
         'name',
         'company',
         'phone',
+        'email',
         'service_address',
         'service_date',
         'service_time',
         'people',
         'packages',
         'service',
-        'comment'
+        'comment',
+        'is_new'
+
     ];
 
     protected $hidden = [
