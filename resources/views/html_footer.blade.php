@@ -66,7 +66,6 @@
                $('[data-toggle="tooltip"]').tooltip()
            })
 
-
            $(function () {
                var location = window.location;
                $('#menu-main-menu li a').each(function () {
@@ -79,6 +78,7 @@
                })
 
            });
+
 
 
            // $('button[type="submit"]').click(function () {

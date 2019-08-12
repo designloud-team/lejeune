@@ -272,13 +272,17 @@ class NotaryController extends Controller
             })->get();
 
             if (!empty($data) && $data->count()) {
+                $duplicates = [];
+                $empty = [];
 
                 foreach ($data->toArray() as $key => $value) {
 
-                    if(!empty($value)){
+                    $duplicate = Notary::where('email', $value['email'])->first();
+
+                    if (!empty($value) && !$duplicate && isset($value['email'])) {
                         //foreach ($value as $k => $v) {
                         $insert[] = [
-                            'local' => $value['local']?$value['local']:0,
+                            'local' => $value['local'] ? $value['local'] : 0,
                             'state' => $value['state'],
                             'first_name' => $value['first_name'],
                             'last_name' => $value['last_name'],
@@ -290,25 +294,40 @@ class NotaryController extends Controller
                             'alternate_phone' => $value['alternate_phone'],
                             'fax' => $value['fax'],
                             'website' => $value['website'],
-                            'e_docs' => $value['e_docs']?$value['e_docs']:0,
-                            'insurance' => $value['insurance']?$value['insurance']:0,
+                            'e_docs' => $value['e_docs'] ? $value['e_docs'] : 0,
+                            'insurance' => $value['insurance'] ? $value['insurance'] : 0,
                             'insurance_amount' => $value['insurance_amount'],
                             'ssn_or_ein' => $value['ssn_or_ein'],
                             'notes' => $value['notes'],
                             'user_id' => Auth::user()->id,
                         ];
                         //}
+                    } else {
+                        if ($duplicate) {
+                            array_push($duplicates, $value['email']);
+                        }
+                        if (!isset($value['email'])) {
+                            if (isset($value['business_name'])) {
+                                array_push($empty, $value['business_name']);
+                            }
+                        }
                     }
-                }
-                if(!empty($insert)){
-                    foreach($insert as $notary){
-                        Notary::create($notary);
+
+                    if (!empty($insert)) {
+                        foreach ($insert as $notary) {
+                            Notary::create($notary);
+                        }
+
+                        Session::flash('flash_message', 'Import Successful!');
+                        return back();
                     }
-                    Session::flash('flash_message', 'Import Successful!');
-                    return back();
                 }
             }
         }
+        if(count($duplicates) || count($empty)) {
+            Session::flash('errors', implode(', ', $duplicates) . ' were duplicates.<br>'. implode(', ', $empty) .' had no email address.');
+        }
+
         return back()->with('error','Please Check your file, Something is wrong there.');
 
     }

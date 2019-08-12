@@ -70,6 +70,4 @@
 </div>
 
 <!-- ./wrapper -->
-
-
 @include('html_footer')

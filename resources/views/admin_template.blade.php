@@ -74,7 +74,7 @@
 
                         <div class="col-md-12" style="margin:1% auto; text-align: center">
                             <hr>
-                            <a href="/">Home</a> &nbsp;|&nbsp;<a href="/customers-dashboard">Customer Administration</a>  &nbsp;|&nbsp;<a href="/notaries-dashboard">Notary Administration</a> &nbsp;|&nbsp;<a href="/jobs-dashboard">Job Administration</a> &nbsp;|&nbsp;<a href="/invoices-dashboard">Invoice: Customers</a> &nbsp;|&nbsp;<a href="/invoices-dashboard">Invoice: Notaries</a> &nbsp;|&nbsp;<a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                            <a href="/dashboard"> Admin Home</a> &nbsp;|&nbsp;<a href="/customers-dashboard">Customer Administration</a>  &nbsp;|&nbsp;<a href="/notaries-dashboard">Notary Administration</a> &nbsp;|&nbsp;<a href="/jobs-dashboard">Job Administration</a> &nbsp;|&nbsp;<a href="/invoices-dashboard">Invoice: Customers</a> &nbsp;|&nbsp;<a href="/invoices-dashboard">Invoice: Notaries</a> &nbsp;|&nbsp;<a href="{{ url('/logout') }}" onclick="event.preventDefault();
                              document.getElementById('logout-form1').submit();">
                                 Logout</a>
                             <form id="logout-form1" action="{{ url('/logout') }}" method="POST"

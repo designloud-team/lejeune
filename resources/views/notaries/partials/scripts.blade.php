@@ -50,7 +50,7 @@ jQuery(document).ready(function($){
                 defaultContent: '',
                 orderable: false
             },
-            { data: 'name', name: 'Notary' },
+            { data: 'name', name: 'name' },
             { data: 'state', name: 'State' },
             { data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
         ],
