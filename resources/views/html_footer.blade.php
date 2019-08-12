@@ -67,19 +67,18 @@
            })
 
 
-           // $(function () {
-           //     var location = window.location;
-           //     $('#menu-main-menu li a').each(function () {
-           //         if($(this).prop('href') === location) {
-           //             alert($(this))
-           //             $(this).parent('li').addClass('current-menu-item current_page_item active')
-           //         } else {
-           //             $(this).parent('li').removeClass('current-menu-item current_page_item active')
-           //
-           //         }
-           //     })
-           //
-           // });
+           $(function () {
+               var location = window.location;
+               $('#menu-main-menu li a').each(function () {
+                   if($(this).prop('href') == location) {
+                       $(this).parent('li').addClass('current-menu-item current_page_item active')
+                   } else {
+                       $(this).parent('li').removeClass('current-menu-item current_page_item active')
+
+                   }
+               })
+
+           });
 
 
            // $('button[type="submit"]').click(function () {
