@@ -48,19 +48,8 @@
                                                                             <td valign="top" id="td-first">
                                                                                 <h3 style="">Signing Completion Report</h3>
 
-                                                                                <form method="POST" action="">
+                                                                                <form method="POST" action="{{route('notary.login')}}">
                                                                                     @csrf
-                                                                                    <div class="form-group row">
-                                                                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                                                                        <div class="col-md-8">
-                                                                                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                                                                            @if ($errors->has('email'))
-                                                                                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('email') }}</strong></span>
-                                                                                            @endif
-                                                                                        </div>
-                                                                                    </div>
 
                                                                                     <div class="form-group row">
                                                                                         <label for="job" class="col-md-4 col-form-label text-md-right">{{ __('Registered ID') }}</label>
@@ -68,9 +57,22 @@
                                                                                         <div class="col-md-8">
                                                                                             <input id="job" type="job" class="form-control{{ $errors->has('job') ? ' is-invalid' : '' }}" name="job" required>
 
-{{--                                                                                                <span class="invalid-feedback" role="alert"><strong></strong></span>--}}
+                                                                                      {{--<span class="invalid-feedback" role="alert"><strong></strong></span>--}}
                                                                                         </div>
                                                                                     </div>
+
+                                                                                    <div class="form-group row">
+                                                                                        <label for="last" class="col-md-4 col-form-label text-md-right">{{ __('Username (Last Name)') }}</label>
+
+                                                                                        <div class="col-md-8">
+                                                                                            <input id="last" type="text" class="form-control" name="last" value="{{ old('last') }}" required autofocus>
+
+{{--                                                                                            @if ($errors->has('email'))--}}
+{{--                                                                                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('email') }}</strong></span>--}}
+{{--                                                                                            @endif--}}
+                                                                                        </div>
+                                                                                    </div>
+
 
                                                                                     <div class="form-group row">
                                                                                         <div class="col-md-6 offset-md-4">

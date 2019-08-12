@@ -68,7 +68,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <b>Service Time: </b> {{ time('H:i: a', strtotime($order->service_time) ) }}
+                        <b>Service Time: </b> {{ time('H:i: A', strtotime($order->service_time) ) }}
                       </td>
                     </tr>
                     <tr>

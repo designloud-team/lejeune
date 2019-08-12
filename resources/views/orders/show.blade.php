@@ -16,7 +16,9 @@
                 <div class="col-xs-12">
                     <div class="pull-right btn-group">
                         <a href="/orders/{{ $order->id }}/edit" class="btn btn-danger">Edit</a>
-                            <a href="/orders/{{ $order->id }}/edit" class="btn btn-danger">Convert</a>
+                        <a href="/orders/{{ $order->id }}/pdf" class="btn btn-danger">Print/Download</a>
+                        <a href="#" class="btn btn-danger">Convert to Job</a>
+                        <a href="/orders" class="btn btn-danger">All Orders</a>
                     </div>
                 </div>
             </div>
@@ -49,8 +51,7 @@
                         <div class="box-body pad">
 
                             <p><strong>Service Address: </strong>{{ $order->service_address }}</p>
-                            <p><strong>Service Date: </strong>{{ $order->service_date }}</p>
-                            <p><strong>Service Time: </strong>{{ $order->service_time }}</p>
+                            <p><strong>Service Date & Time: </strong><a id="service_date_time" >{{ date('l F jS, Y', strtotime($order->service_date)) }} {{ date('g:i A', strtotime($order->service_time) )}}</a></p>
                             <p><strong>People: </strong>{{ $order->people }}</p>
                             <p><strong>Packages: </strong>{{ $order->packages }}</p>
                             <p><strong>Service: </strong>{{ $order->service }}</p>

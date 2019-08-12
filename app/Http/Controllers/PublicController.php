@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Job;
 use App\Notary;
 use App\Notifications\NotaryVerificationEmail;
 use Session;
@@ -57,6 +58,20 @@ class PublicController extends Controller
             $notary->notify(new NotaryVerificationEmail($notary));
 
             return response()->json(['message' => 'Verification Email Sent']);
+        }
+
+    }
+    public function findNotaryByLast(Request $request)
+    {
+
+        $job = Job::where('registered_id', $request->job)->first();
+
+        if ($job) {
+
+            return 'job found';
+        } else {
+            return 'no job found';
+
         }
 
     }
