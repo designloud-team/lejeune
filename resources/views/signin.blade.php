@@ -1,5 +1,21 @@
 @extends('public_template')
 <style>
+    form label {
+        font-size: 18px!important;
+        /*width: auto!important;*/
+    }
+    form input {
+        max-width: 300px!important;
+        margin: 0 auto;
+    }
+    td.img {
+        text-align: center;
+    }
+    td#td-first h3 {
+        margin-left:-20px!important; ;
+        margin-bottom:20px!important; ;
+        /*border-bottom: 1px solid #000;*/
+    }
     @media (max-width:768px) {
         /*#td-first {*/
 
@@ -28,7 +44,7 @@
                                                                     <table border="0" width="100%">
                                                                         <tbody>
                                                                         <tr>
-                                                                            <td><img src="http://lejeunenotaries.com/images/report.jpg"></td>
+                                                                            <td class="img"><img src="http://lejeunenotaries.com/images/report.jpg"></td>
                                                                             <td valign="top" id="td-first">
                                                                                 <h3 style="">Signing Completion Report</h3>
 
@@ -47,14 +63,12 @@
                                                                                     </div>
 
                                                                                     <div class="form-group row">
-                                                                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Registered ID') }}</label>
+                                                                                        <label for="job" class="col-md-4 col-form-label text-md-right">{{ __('Registered ID') }}</label>
 
                                                                                         <div class="col-md-8">
                                                                                             <input id="job" type="job" class="form-control{{ $errors->has('job') ? ' is-invalid' : '' }}" name="job" required>
 
-                                                                                            @if ($errors->has('password'))
-                                                                                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('password')}}</strong></span>
-                                                                                            @endif
+{{--                                                                                                <span class="invalid-feedback" role="alert"><strong></strong></span>--}}
                                                                                         </div>
                                                                                     </div>
 
@@ -80,18 +94,24 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </form>
-                                                                                <p align="center">Thank you for your interest in LejeuneNotaries.com.<br>
-                                                                                    We look forward to working with you.</p>
+
                                                                             </td>
                                                                         </tr>
                                                                         </tbody>
                                                                     </table>
-                                                                </div> </div>
-                                                        </div> </div>
-                                                </div> </div>
+                                                                    <p align="center">Thank you for your interest in LejeuneNotaries.com.<br>
+                                                                        We look forward to working with you.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div></div> </div>
+                                </div>
+                            </div>
+                        </div>
                     </article>
 
                 </div>
