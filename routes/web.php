@@ -94,6 +94,5 @@ Route::group(array('middleware'=> 'auth'), function (){
     });
 
 });
-
 Auth::routes();
 Route::get('logs', '\Melihovv\LaravelLogViewer\LaravelLogViewerController@index');
