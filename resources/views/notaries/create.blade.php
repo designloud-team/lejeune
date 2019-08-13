@@ -26,17 +26,17 @@
                             <div class="form-group col-md-12" style="">
                                 <div class="form-group col-md-6">
                                     {!! Form::label('state', 'State:', ['class' => 'control-label']) !!}
-                                    {!! Form::select('state', ['Select State' => $states], 'NC',['class' => 'form-control selectpicker']) !!}
+                                    {!! Form::select('state', ['Select State' => $states], 'NC',['class' => 'form-control selectpicker', 'required']) !!}
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     {!! Form::label('first_name', 'First name: *', ['class' => 'control-label']) !!}
-                                    {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
+                                    {!! Form::text('first_name', null, ['class' => 'form-control', 'required']) !!}
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    {!! Form::label('last_name', 'Last name:', ['class' => 'control-label']) !!}
-                                    {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
+                                    {!! Form::label('last_name', 'Last name:*', ['class' => 'control-label']) !!}
+                                    {!! Form::text('last_name', null, ['class' => 'form-control', 'required']) !!}
                                 </div>
                                 <div class="form-group col-md-6">
                                     {!! Form::label('business_name', 'Business name:', ['class' => 'control-label']) !!}
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
-                                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                    {!! Form::text('email', null, ['class' => 'form-control', 'required']) !!}
                                 </div>
                                 <div class="form-group col-md-6">
                                     {!! Form::label('phone', 'Phone:', ['class' => 'control-label']) !!}

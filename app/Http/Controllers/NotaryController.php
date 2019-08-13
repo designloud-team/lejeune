@@ -74,10 +74,8 @@ class NotaryController extends Controller
         ]);
 
         $data = $request->all();
-        if(!isset($request->delivery_address)) {
-            $data['delivery_address'] = $data['mailing_address'];
-        }
         $notary = Notary::create($data);
+
         $jobs = $notary->jobs;
         $invoices = $notary->invoices;
         $reports = $notary->reports;
