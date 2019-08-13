@@ -78,9 +78,9 @@ class NotaryController extends Controller
             $data['delivery_address'] = $data['mailing_address'];
         }
         $notary = Notary::create($data);
-        $jobs = [];
-        $invoices = [];
-        $reports = [];
+        $jobs = $notary->jobs;
+        $invoices = $notary->invoices;
+        $reports = $notary->reports;
         return view('notaries.show', compact('notary','jobs', 'invoices', 'reports'));
     }
 

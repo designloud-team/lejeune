@@ -20,6 +20,25 @@
     .btn-group {height: 35px;}
 
     .caret-toggle {height: 97%;}
+    .dataTables_processing {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 250px;
+        height: 80px;
+        margin-left: -125px;
+        margin-top: -15px;
+        padding: 15px 0 30px 0;
+        border: 1px solid #ddd;
+        text-align: center;
+        color: #444;
+        font-size: 14px;
+        background: url("./img/loading_bar.gif") no-repeat center 38px #fff;
+        box-shadow: 2px 2px 5px #444;
+        -moz-box-shadow: 2px 2px 5px #444;
+        -webkit-box-shadow: 2px 2px 5px #444;
+        z-index: 9999;
+    }
 </style>
 <body id="main-body" class="fix-header page-template-default page page-id-14 fl-builder fl-theme-builder-header fl-theme-builder-footer fl-preset-default fl-fixed-width fl-search-active">
 

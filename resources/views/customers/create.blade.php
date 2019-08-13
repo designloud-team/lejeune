@@ -31,7 +31,7 @@
 
                         <div class="form-group col-md-6">
                             {!! Form::label('phone_number', 'Phone number: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('phone_number', null, ['class' => 'form-control']) !!}
+                            {!! Form::text('phone_number', null, ['class' => 'form-control', 'required']) !!}
                         </div>
 
                         <div class="form-group col-md-6">
@@ -63,11 +63,11 @@
                         </div>
                         <div class="form-group col-md-12">
                             {!! Form::checkbox('same_as_shipping', 0, null, ['class' => 'form-control', 'id' => 'same_as_shipping']) !!}
-                            {!! Form::label('same_as_shipping', 'Billing same as Shipping address?', ['class' => 'control-label', 'id'=> 'shipping_address']) !!}
+                            {!! Form::label('same_as_shipping', 'Billing same as Shipping address?', ['class' => 'control-label', 'id'=> 'shipping_address', 'required']) !!}
                         </div>
                         <div class="form-group col-md-12">
                             {!! Form::label('billing_address', 'Billing Address:', ['class' => 'control-label']) !!}
-                            {!! Form::text('billing_address', null, ['class' => 'form-control', 'id'=> 'billing_address']) !!}
+                            {!! Form::text('billing_address', null, ['class' => 'form-control', 'id'=> 'billing_address', 'required']) !!}
                         </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->

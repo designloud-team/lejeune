@@ -61,6 +61,7 @@
                 </div>
 
             </div>
+
             @if($jobs->count() || $invoices->count() || $reports->count() )
 
             <hr style="width: 100%;height: 1px; color: gray;background-color: gray">

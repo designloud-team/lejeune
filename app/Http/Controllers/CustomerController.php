@@ -79,8 +79,10 @@ class CustomerController extends Controller
 //        dd($data);
         $customer = Customer::create($data);
 
-        return view('customers.show', compact('customer'));
+        $jobs = $customer->jobs;
+        $invoices = $customer->invoices;
 
+        return view('customers.show', compact('customer', 'invoices', 'jobs'));
     }
 
     /**
@@ -127,8 +129,10 @@ class CustomerController extends Controller
 
         $customer->update($data);
 
-        return view('customers.show', compact('customer'));
+        $jobs = $customer->jobs;
+        $invoices = $customer->invoices;
 
+        return view('customers.show', compact('customer', 'invoices', 'jobs'));
     }
 
     /**
