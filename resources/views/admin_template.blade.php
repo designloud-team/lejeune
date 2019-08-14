@@ -39,6 +39,7 @@
         -webkit-box-shadow: 2px 2px 5px #444;
         z-index: 9999;
     }
+    .box-header {padding-bottom: 10px} .padd-left {padding-left: 5%;}
 </style>
 <body id="main-body" class="fix-header page-template-default page page-id-14 fl-builder fl-theme-builder-header fl-theme-builder-footer fl-preset-default fl-fixed-width fl-search-active">
 

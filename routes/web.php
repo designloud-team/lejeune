@@ -78,8 +78,13 @@ Route::group(array('middleware'=> 'auth'), function (){
             Route::get( '/downloadExcel/{type}', ['as'=>'notaries.downloadExcel', 'uses'=>'NotaryController@downloadExcel'] );
             Route::post( '/importExcel', ['as'=>'notaries.importExcel', 'uses'=>'NotaryController@importExcel'] );
             Route::get( '/data/{type}', ['as'=>'notaries.data', 'uses'=>'NotaryController@getDatatablesData'] );
+
 //            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
     });
+
+    Route::get( '/notaries-search', ['as'=>'notaries.search', 'uses'=>'NotaryController@searchByState'] );
+    Route::post( '/notaries-search', ['as'=>'notaries.findNotary', 'uses'=>'NotaryController@findNotaryByState'] );
+
     Route::group( ['prefix' => 'orders'], function() {
         Route::get( '/', ['as'=>'orders.index', 'uses'=>'OrderController@index'] );
         Route::get( '/{id}', ['as'=>'orders.show', 'uses'=>'OrderController@show'] );

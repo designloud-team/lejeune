@@ -57,6 +57,11 @@ Breadcrumbs::register('notaries.edit', function($breadcrumbs, $notary)
     $breadcrumbs->parent('notaries.show', $notary);
     $breadcrumbs->push('Edit notary', route('notaries.edit', $notary->id));
 });
+Breadcrumbs::register('notaries.search', function($breadcrumbs)
+{
+    $breadcrumbs->parent('notaries.index');
+    $breadcrumbs->push('notaries', route('notaries.search'));
+});
 // orders
 Breadcrumbs::register('orders.index', function($breadcrumbs)
 {

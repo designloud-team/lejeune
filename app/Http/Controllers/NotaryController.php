@@ -330,4 +330,13 @@ class NotaryController extends Controller
 
     }
 
+    public function searchByState()
+    {
+        return view('notaries.search');
+    }
+    public function findNotaryByState(Request $request)
+    {
+        return Notary::where('state', $request->state)->get();
+    }
+
 }

@@ -300,7 +300,9 @@ class OrderController extends Controller
     public function pdf($id)
     {
         $order = Order::find($id);
+
         $pdf = PDF::loadView('pdf.order', ['order' => $order]);
+
         return $pdf->stream();
     }
 }

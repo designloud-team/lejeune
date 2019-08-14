@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row padd-left">
                 <div class="">
                     <div class="box box-default col-md-6 col-sm-12">
                         <div class="box-header">

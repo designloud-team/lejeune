@@ -9,15 +9,15 @@
 </style>
 @section('content')
 <div class="container-fluid">
-    <div class="row">
+    <div class="row padd-left">
         <!-- Main content -->
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="pull-right btn-group">
                         <a href="/orders/{{ $order->id }}/edit" class="btn btn-danger">Edit</a>
-                        <a href="/orders/{{ $order->id }}/pdf" class="btn btn-danger">Print/Download</a>
-                        <a href="#" class="btn btn-danger">Convert to Job</a>
+                        <a href="/orders/{{ $order->id }}/pdf" class="btn btn-danger">Print</a>
+                        <a href="#" class="btn btn-danger">Convert Order</a>
                         <a href="/orders" class="btn btn-danger">All Orders</a>
                     </div>
                 </div>
