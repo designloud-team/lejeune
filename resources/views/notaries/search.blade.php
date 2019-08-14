@@ -23,7 +23,7 @@
                                 </select>
                         </div>
                         <br>
-                        <div class="col-md-12 hide recent pull-right"></div>
+                        <div class="col-md-3 hide recent pull-right"></div>
 
                     </div>
                 </div>
@@ -48,7 +48,8 @@
         let old = document.cookie.replace(/(?:(?:^|.*;\s*)state2\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         if(old) {
             $(".recent").html('<span>Recent searches: <a data-href="'+old+'">'+text+'</a></span>')
-            $(".recent").removeClass('hide')
+            $(".recent").addClass('pull-right').removeClass('hide')
+
         }
         $.ajaxSetup({
             headers: {
@@ -75,8 +76,8 @@
 
                 document.cookie = "state="+$('#select').find('option:selected').text();
                 document.cookie = "state2="+state;
-                $(".recent").html('<span>Recent searches: <a data-href="'+state+'">'+$('#select').find('option:selected').text()+'</a></span>')
-                $(".recent").removeClass('hide')
+                // $(".recent").html('<span>Recent searches: <a data-href="'+state+'">'+$('#select').find('option:selected').text()+'</a></span>')
+                // $(".recent").removeClass('hide')
             })
         })
 
