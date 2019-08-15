@@ -26,6 +26,7 @@
                             <div class="box-body pad">
                                 <div class="form-group col-md-12" style="">
                                     {!! Form::hidden('local', 0, null, ['class' => 'form-control']) !!}
+                                    {!! Form::hidden('status','new',['class' => 'form-control']); !!}
 
                                     <div class="clearfix"></div>
 
@@ -86,6 +87,7 @@
                                         {!! Form::label('customer_id', 'Customer: (Optional)', ['class' => 'control-label']) !!}
                                         {!! Form::select('customer_id', ['Customers' => $customers, 'new-customer' => 'New Customer'], isset($job->customer_id)? $job->customer_id: null,['class' => 'form-control selectpicker', 'placeholder' => 'Select existing customer' ]) !!}
                                     </div>
+
                                 </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->

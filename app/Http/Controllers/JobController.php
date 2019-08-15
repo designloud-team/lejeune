@@ -222,15 +222,23 @@ class JobController extends Controller
     protected function getJobDTData()
     {
 
-        $query = Job::all();
-
-
+        $query = Job::whereNotIn('status', ['completed', 'completed_w_issues'])->get();
+//        $query = Job::all();
         return DataTables::of($query)
 
             ->addColumn('hash_id', function ($result) {
                 return $result->hash_id;
             })
-
+            ->editColumn('date', function ($job) {
+                return date('l F jS, Y g:i A',strtotime($job->date . $job->time));
+            })
+            ->editColumn('status', function ($job) {
+                if($job->status == 'new') {return 'New';}
+                if($job->status == 'completed_w_issues') {return 'Completed With Issues';}
+                if($job->status == 'completed') {return 'Completed';}
+                if($job->status == 'not_completed') {return 'Not Completed';}
+                return $job->status;
+            })
             ->addColumn('actions', function ($job) {
                 return (string) view(' jobs.partials.actions', compact('job'));
             })
