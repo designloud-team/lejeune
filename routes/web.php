@@ -97,6 +97,22 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::get( '/data/{type}', ['as'=>'orders.data', 'uses'=>'OrderController@getDatatablesData'] );
         Route::get('/{id}/pdf', ['as'=>'order.pdf','uses'=> 'OrderController@pdf']);
     });
+    Route::group( ['prefix' => 'jobs'], function() {
+        Route::get( '/', ['as'=>'jobs.index', 'uses'=>'JobController@index'] );
+        Route::get( '/create', ['as'=>'jobs.create', 'uses'=>'JobController@create'] );
+        Route::post( '/create', ['as'=>'jobs.store', 'uses'=>'JobController@store'] );
+        Route::get( '/{id}', ['as'=>'jobs.show', 'uses'=>'JobController@show'] );
+        Route::get( '/{id}/edit', ['as'=>'jobs.edit', 'uses'=>'JobController@edit'] );
+        Route::patch( '/{id}', ['as'=>'jobs.update', 'uses'=>'JobController@update'] );
+        Route::delete( '/{id}', ['as'=>'jobs.destroy', 'uses'=>'JobController@destroy'] );
+//        Route::post( '/update-tags', ['as'=>'notaries.update-tags', 'uses'=>'NotaryController@updateTags'] );
+        Route::post( '/destroy-all', ['as'=>'jobs.destroy-all', 'uses'=>'JobController@destroyAll'] );
+        Route::get( '/downloadExcel/{type}', ['as'=>'jobs.downloadExcel', 'uses'=>'JobController@downloadExcel'] );
+        Route::post( '/importExcel', ['as'=>'jobs.importExcel', 'uses'=>'JobController@importExcel'] );
+        Route::get( '/data/{type}', ['as'=>'jobs.data', 'uses'=>'JobController@getDatatablesData'] );
+
+//            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
+    });
 
 });
 Auth::routes();

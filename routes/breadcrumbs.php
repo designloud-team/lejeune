@@ -83,3 +83,35 @@ Breadcrumbs::register('orders.edit', function($breadcrumbs, $order)
     $breadcrumbs->parent('orders.show', $order);
     $breadcrumbs->push('Edit order', route('orders.edit', $order->id));
 });
+// jobs
+Breadcrumbs::register('jobs.index', function($breadcrumbs)
+{
+    $breadcrumbs->parent('dashboard.index');
+    $breadcrumbs->push('jobs', route('jobs.index'));
+});
+
+// notaries > Add notaries
+Breadcrumbs::register('jobs.create', function($breadcrumbs)
+{
+    $breadcrumbs->parent('jobs.index');
+    $breadcrumbs->push('Add job', route('jobs.create'));
+});
+
+// notaries > [notaries Name]
+Breadcrumbs::register('jobs.show', function($breadcrumbs, $job)
+{
+    $breadcrumbs->parent('jobs.index');
+    $breadcrumbs->push($job->id);
+});
+
+// notaries > [notaries Name] > Edit notaries
+Breadcrumbs::register('jobs.edit', function($breadcrumbs, $job)
+{
+    $breadcrumbs->parent('jobs.show', $job);
+    $breadcrumbs->push('Edit job', route('jobs.edit', $job->id));
+});
+Breadcrumbs::register('jobs.search', function($breadcrumbs)
+{
+    $breadcrumbs->parent('jobs.index');
+    $breadcrumbs->push('jobs', route('jobs.search'));
+});

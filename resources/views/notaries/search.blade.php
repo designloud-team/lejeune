@@ -17,6 +17,7 @@
                         <div class="pull-left">
                             <label for="select">Search for notaries by State</label>
                             <select class="selectpicker inline" data-live-search id="select">
+                                <option value="">Select State</option>
                                     @foreach($states as $key => $state)
                                     <option value="{{$key}}">{{$state}}</option>
                                      @endforeach

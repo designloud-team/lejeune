@@ -1,73 +1,99 @@
 @extends('admin_template')
 
-@push('styles')
-
-@endpush
-
 @section('breadcrumbs')
     {!! Breadcrumbs::render() !!}
 @stop
 @section('content')
-<div class="container-fluid">
-    <div class="row">
+    <div class="container-fluid">
+        <div class="row">
             <!-- Display Validation Errors -->
             @include('common.errors')
-
-            {!! Form::open([
-                'route' => 'items.store'
-            ]) !!}
-
-            <div class="col-sm-12">
+            <h3 class="box-title">Add new job details</h3>
+            <div class="col-sm-12 fieldset">
+                {!! Form::open([
+                  'route' => 'jobs.store'
+                    ]) !!}
                 <div class="box box-default">
-                    <div class="box-header">
-                      <h3 class="box-title">Details</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body pad">
-                        <div class="form-group">
-                            {!! Form::label('item', 'Item: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('item', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                        </div>
 
-                        <div class="form-group">
-                            {!! Form::label('description', 'Description: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('description', null, ['class' => 'form-control',  'required' => 'required']) !!}
-                        </div>
+                <!-- /.box-header -->
+                        <div class="box-body pad">
+                            <div class="form-group col-md-12" style="">
+                                {!! Form::hidden('local', 0, null, ['class' => 'form-control']) !!}
 
-                        <div class="form-group">
-                            {!! Form::label('amount', 'Amount: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('amount', '0.00', ['class' => 'form-control', 'required' => 'required']) !!}
-                        </div>
+                                <div class="clearfix"></div>
 
-                        <div class="form-group">
-                            {!! Form::label('quantity', 'Quantity: *', ['class' => 'control-label']) !!}
-                            {!! Form::text('quantity', '1.0', ['class' => 'form-control', 'required' => 'required']) !!}
-                        </div>
+                                <div class="form-group col-md-6">
+                                    {!! Form::label('borrower', 'Borrower:*', ['class' => 'control-label'])  !!}
+                                    {!! Form::text('borrower',null,['class' => 'form-control', 'placeholder'=> 'Borrower\'s Full Name']); !!}
 
-                        <div class="form-group">
-                            <label>
-                                {!! Form::checkbox('taxable', '1', ['class' => 'form-control']) !!}  Taxable
-                            </label>
-                            {!! Form::hidden('global', '1', array('id' => 'global')) !!}
-                        </div>
-                        @if(count($fields) > 0)
-                            <div class="form-group">
-                                @include("fields.customfield")
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    {!! Form::label('coborrower', 'Co-Borrower:* (If Applicable)', ['class' => 'control-label'])  !!}
+                                    {!! Form::text('coborrower',null,['class' => 'form-control', 'placeholder'=> 'CoBorrower\'s Full Name']); !!}
+
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <div class="form-group col-md-4">
+                                    {!! Form::label('daytime_phone', 'Daytime Phone:', ['class' => 'control-label'])  !!}
+                                    {!! Form::text('daytime_phone',null,['class' => 'form-control','placeholder'=> 'Daytime phone number']); !!}
+                                </div>
+                                <div class="form-group col-md-4">
+                                    {!! Form::label('evening_phone', 'Evening Phone:', ['class' => 'control-label'])  !!}
+                                    {!! Form::text('evening_phone',null,['class' => 'form-control','placeholder'=> 'Evening phone number']); !!}
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <div class="form-group col-md-8">
+                                    {!! Form::label('property_address', 'Property Address:', ['class' => 'control-label'])  !!}
+                                    {!! Form::text('property_address',null,['class' => 'form-control','placeholder'=> 'Property Address', 'required']); !!}
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {!! Form::label('signing_address', 'Location of Signing:', ['class' => 'control-label'])  !!}
+                                    {!! Form::text('signing_address',null,['class' => 'form-control','placeholder'=> 'Signing Address', 'required']); !!}
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <div class="form-group col-md-4">
+                                    {!! Form::label('date', 'Date:', ['class' => 'control-label'])  !!}
+                                    {!! Form::date('date',null,['class' => 'form-control', 'required']); !!}
+                                </div>
+                                <div class="form-group col-md-4">
+                                    {!! Form::label('time', 'Time:', ['class' => 'control-label'])  !!}
+                                    {!! Form::time('time',null,['class' => 'form-control', 'required']); !!}
+                                </div>
+                                <div class="form-group col-md-4">
+                                    {!! Form::label('packages', 'No. of Packages:', ['class' => 'control-label'])  !!}
+                                    {!! Form::number('packages',1,['class' => 'form-control','placeholder'=> '1-100', 'min'=> '1', 'max'=> '100','required']); !!}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {!! Form::label('notary_id', 'Notary:', ['class' => 'control-label']) !!}
+                                    {!! Form::select('notary_id', ['Select Notary' => $notaries, 'new-notary' => 'New Notary'], null,['class' => 'form-control selectpicker', 'required', 'placeholder' => 'Select existing notary']) !!}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {!! Form::label('notary_fee', 'Notary Fee:', ['class' => 'control-label']) !!}
+                                    {!! Form::text('notary_fee',null,['class' => 'form-control','placeholder'=> 'Notary Fee', 'required']); !!}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {!! Form::label('customer_id', 'Customer: (Optional)', ['class' => 'control-label']) !!}
+                                    {!! Form::select('customer_id', ['Customers' => $customers, 'new-customer' => 'New Customer'], null,['class' => 'form-control selectpicker', 'placeholder' => 'Select existing customer' ]) !!}
+                                </div>
                             </div>
-                        @endif
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
-            </div><!-- /.col-sm-12 -->
-
-        {!! Form::submit('Create New Line Item', ['class' => 'btn btn-primary']) !!}
-
-        {!! Form::close() !!}
+                        </div><!-- /.box-body -->
+                <div class="form-group col-md-12">
+                    {!! Form::submit('Create New Job', ['class' => 'btn btn-primary']) !!}
+                </div>
+                </div><!-- /.col-sm-12 -->
+                {!! Form::close() !!}
+        </div>
     </div>
-</div>
-
+    </div>
 
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
 
-@push('scripts')
-
-@endpush
+    })
+</script>
