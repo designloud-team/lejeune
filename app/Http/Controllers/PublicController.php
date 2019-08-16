@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Job;
 use App\Notary;
 use App\Notifications\NotaryVerificationEmail;
+use App\Report;
 use Session;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
@@ -64,15 +65,25 @@ class PublicController extends Controller
     public function findNotaryByLast(Request $request)
     {
 
-        $job = Job::where('registered_id', $request->job)->first();
-
-        if ($job) {
-
-            return 'job found';
+        $job = Job::where('registered_id', '=',$request->job)->value('id');
+        $report = Report::where('job_id', '=',$job)->first();
+        if ($report ) {
+            return view('report', compact('report'), ['job' => Job::find($job)]);
         } else {
-            return 'no job found';
+            return back()->with('error' , 'No Report Found');
 
         }
+
+    }
+    public function submitReport(Request $request)
+    {
+        $report = Report::where('job_id', '=',$request->job)->first();
+
+        $data =$request->all();
+
+        $report->update($data);
+
+        return view('thanks');
 
     }
 

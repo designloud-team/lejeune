@@ -6,6 +6,7 @@
     .white-box {
         padding: 0;
     }
+    .card {background: #fff!important;}
 
     .dash {
         padding: 5%;

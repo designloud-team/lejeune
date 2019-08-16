@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CSVtoSQL;
 use App\Customer;
 use App\Job;
+use App\Report;
 use Excel;
 use Auth;
 use DB;
@@ -87,6 +88,18 @@ class JobController extends Controller
 
         $job = Job::create($data);
 
+        $report = Report::create([
+            'is_completed' => 0,
+            'tracking' => null,
+            'carrier'  => null,
+            'completion_date'  => null,
+            'shipping_date'  => null,
+            'explanation'  => null,
+            'customer_id'  => $data['customer_id']?$data['customer_id']: null,
+            'notary_id'  => $data['notary_id']?$data['notary_id']:null,
+            'job_id'  => $job->id,
+            'user_id'
+        ]);
 //        $job = Job::create([
 //            'borrower' => $data['borrower'],
 //            'coborrower' => $data['coborrower'],

@@ -16,6 +16,12 @@
         margin-bottom:20px!important; ;
         /*border-bottom: 1px solid #000;*/
     }
+    #submit-Btn {
+        width: 100%!important;
+        background: #821a1a!important;
+        border:1px solid #821a1a!important;
+
+    }
     @media (max-width:768px) {
         /*#td-first {*/
 
@@ -23,6 +29,21 @@
             /*width: 400px;*/
             /*margin: 0;*/
         /*}*/
+    }
+    @media (max-width:600px) {
+        td.img {
+            display: none!important;
+        }
+        #submit-Btn {
+            width: 100%!important;
+            background: #821a1a!important;
+            border:1px solid #821a1a!important;
+
+        }
+        #td-first {
+            width: 80%!important;
+            padding: 0 5%;
+        }
     }
 </style>
 @section('content')
@@ -50,29 +71,26 @@
 
                                                                                 <form method="POST" action="{{route('notary.login')}}">
                                                                                     @csrf
-
                                                                                     <div class="form-group row">
-                                                                                        <label for="job" class="col-md-4 col-form-label text-md-right">{{ __('Registered ID') }}</label>
+                                                                                        <label for="last" class="col-md-3 col-form-label text-md-right">{{ __('Username') }}</label>
 
-                                                                                        <div class="col-md-8">
-                                                                                            <input id="job" type="job" class="form-control{{ $errors->has('job') ? ' is-invalid' : '' }}" name="job" required>
-
-                                                                                      {{--<span class="invalid-feedback" role="alert"><strong></strong></span>--}}
+                                                                                        <div class="col-md-6">
+                                                                                            <input id="last" type="text" class="form-control" name="last" value="{{ old('last') }}" required autofocus placeholder="Last Name">
                                                                                         </div>
+{{--                                                                                        <p class="col-md-3 text-md-left help-block">(Last Name)</p>--}}
+
                                                                                     </div>
 
                                                                                     <div class="form-group row">
-                                                                                        <label for="last" class="col-md-4 col-form-label text-md-right">{{ __('Username (Last Name)') }}</label>
+                                                                                        <label for="job" class="col-md-3 col-form-label text-md-right">{{ __('Registered ID') }}</label>
 
-                                                                                        <div class="col-md-8">
-                                                                                            <input id="last" type="text" class="form-control" name="last" value="{{ old('last') }}" required autofocus>
+                                                                                        <div class="col-md-6">
+                                                                                            <input id="job" type="text" class="form-control" name="job" required placeholder="Job ID">
 
-{{--                                                                                            @if ($errors->has('email'))--}}
-{{--                                                                                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('email') }}</strong></span>--}}
-{{--                                                                                            @endif--}}
                                                                                         </div>
-                                                                                    </div>
+{{--                                                                                        <p class="col-md-3 text-md-left help-block">(Job ID)</p>--}}
 
+                                                                                    </div>
 
                                                                                     <div class="form-group row">
                                                                                         <div class="col-md-6 offset-md-4">
@@ -88,8 +106,8 @@
 
                                                                                     <div class="form-group row mb-0">
                                                                                         <div class="col-md-8 offset-md-4">
-                                                                                            <button type="submit" class="btn btn-primary login-btn">
-                                                                                                {{ __('Submit') }}
+                                                                                            <button type="submit" class="btn btn-primary login-btn" id="submit-Btn">
+                                                                                                {{ __('Find Report') }}
                                                                                             </button>
 
 

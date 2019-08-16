@@ -20,6 +20,9 @@ Route::get('notary-registration','PublicController@getpage');
 Route::get('contact', 'PublicController@getpage');
 Route::get('notaries/{id}/verify', 'PublicController@verify');
 Route::get('signin', 'PublicController@getpage');
+Route::patch('report',['as'=> 'report.save', 'uses'=> 'PublicController@submitReport']);
+
+
 
 Route::group( ['prefix' => 'search'], function() {
     Route::get( '/notary', function() {
@@ -33,7 +36,7 @@ Route::group( ['prefix' => 'search'], function() {
 //        Route::post( '/report', ['as'=>'search.report', 'uses'=>'SearchController@show'] );
 });
 
-Route::post( '/sign-in', ['as'=>'notary.login', 'uses'=>'PublicController@findNotaryByLast'] );
+Route::post( '/report', ['as'=>'notary.login', 'uses'=>'PublicController@findNotaryByLast'] );
 
 //
 Route::group(array('middleware'=> 'auth'), function (){

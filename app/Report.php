@@ -13,7 +13,7 @@ class Report extends Model
     //
     protected $fillable = [
         'is_completed',
-        'tracking_number',
+        'tracking',
         'carrier',
         'completion_date',
         'shipping_date',
