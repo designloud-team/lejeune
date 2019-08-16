@@ -17,7 +17,6 @@
         position: absolute;
         margin-left: 0!important;
     }
-    .card {background: #fff!important;}
     .btn-group {height: 35px;}
 
     .caret-toggle {height: 97%;}

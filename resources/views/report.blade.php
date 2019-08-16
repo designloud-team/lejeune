@@ -39,8 +39,8 @@
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        {!! Form::label('Carrier', 'Carrier:* ', ['class' => 'control-label'])  !!}
-                                        {!! Form::select('carrier',['Fedex'=> 'Fedex', 'UPS'=> 'UPS', 'USPS'=> 'USPS', ],null,['class' => 'form-control', 'placeholder'=> 'Carrier']); !!}
+                                        {!! Form::label('Courier', 'Courier:* ', ['class' => 'control-label'])  !!}
+                                        {!! Form::select('Courier',['Fedex'=> 'Fedex', 'UPS'=> 'UPS', 'USPS'=> 'USPS', ],null,['class' => 'form-control', 'placeholder'=> 'Carrier']); !!}
 
                                     </div>
                                     <div class="clearfix"></div>

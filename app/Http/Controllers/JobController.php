@@ -91,7 +91,7 @@ class JobController extends Controller
         $report = Report::create([
             'is_completed' => 0,
             'tracking' => null,
-            'carrier'  => null,
+            'courier'  => null,
             'completion_date'  => null,
             'shipping_date'  => null,
             'explanation'  => null,
@@ -154,7 +154,6 @@ class JobController extends Controller
     {
         //
         $job = Job::find($id);
-        $notaries = $job->notaries;
         $invoices = $job->invoices;
         $reports = $job->reports;
         $customers = Customer::all()->pluck('name', 'id');

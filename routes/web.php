@@ -18,7 +18,7 @@ Route::get('order', 'PublicController@getpage');
 Route::post('order', ['uses'=> 'OrderController@store']);
 Route::get('notary-registration','PublicController@getpage');
 Route::get('contact', 'PublicController@getpage');
-Route::get('notaries/{id}/verify', 'PublicController@verify');
+//Route::post('notaries/{id}/verify', 'PublicController@verify');
 Route::get('signin', 'PublicController@getpage');
 Route::patch('report',['as'=> 'report.save', 'uses'=> 'PublicController@submitReport']);
 
@@ -113,6 +113,22 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::get( '/downloadExcel/{type}', ['as'=>'jobs.downloadExcel', 'uses'=>'JobController@downloadExcel'] );
         Route::post( '/importExcel', ['as'=>'jobs.importExcel', 'uses'=>'JobController@importExcel'] );
         Route::get( '/data/{type}', ['as'=>'jobs.data', 'uses'=>'JobController@getDatatablesData'] );
+
+//            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
+    });
+    Route::group( ['prefix' => 'reports'], function() {
+        Route::get( '/', ['as'=>'reports.index', 'uses'=>'ReportController@index'] );
+        Route::get( '/create', ['as'=>'reports.create', 'uses'=>'ReportController@create'] );
+        Route::post( '/create', ['as'=>'reports.store', 'uses'=>'ReportController@store'] );
+        Route::get( '/{id}', ['as'=>'reports.show', 'uses'=>'ReportController@show'] );
+        Route::get( '/{id}/edit', ['as'=>'reports.edit', 'uses'=>'ReportController@edit'] );
+        Route::patch( '/{id}', ['as'=>'reports.update', 'uses'=>'ReportController@update'] );
+        Route::delete( '/{id}', ['as'=>'reports.destroy', 'uses'=>'ReportController@destroy'] );
+//        Route::post( '/update-tags', ['as'=>'notaries.update-tags', 'uses'=>'NotaryController@updateTags'] );
+        Route::post( '/destroy-all', ['as'=>'reports.destroy-all', 'uses'=>'ReportController@destroyAll'] );
+        Route::get( '/downloadExcel/{type}', ['as'=>'reports.downloadExcel', 'uses'=>'ReportController@downloadExcel'] );
+        Route::post( '/importExcel', ['as'=>'reports.importExcel', 'uses'=>'ReportController@importExcel'] );
+        Route::get( '/data/{type}', ['as'=>'reports.data', 'uses'=>'ReportController@getDatatablesData'] );
 
 //            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
     });

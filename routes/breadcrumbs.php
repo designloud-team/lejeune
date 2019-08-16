@@ -115,3 +115,30 @@ Breadcrumbs::register('jobs.search', function($breadcrumbs)
     $breadcrumbs->parent('jobs.index');
     $breadcrumbs->push('jobs', route('jobs.search'));
 });
+// reports
+Breadcrumbs::register('reports.index', function($breadcrumbs)
+{
+    $breadcrumbs->parent('dashboard.index');
+    $breadcrumbs->push('reports', route('reports.index'));
+});
+
+
+
+// notaries > [notaries Name]
+Breadcrumbs::register('reports.show', function($breadcrumbs, $report)
+{
+    $breadcrumbs->parent('reports.index');
+    $breadcrumbs->push($report->id);
+});
+
+// notaries > [notaries Name] > Edit notaries
+Breadcrumbs::register('reports.edit', function($breadcrumbs, $report)
+{
+    $breadcrumbs->parent('reports.show', $report);
+    $breadcrumbs->push('Edit report', route('reports.edit', $report->id));
+});
+Breadcrumbs::register('reports.search', function($breadcrumbs)
+{
+    $breadcrumbs->parent('reports.index');
+    $breadcrumbs->push('reports', route('reports.search'));
+});

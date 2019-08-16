@@ -1,6 +1,8 @@
 @extends('public_template')
 <style>
-
+.form-group label {
+    font-size: 14px!important;
+}
 </style>
 @section('content')
     <div class="fl-page-content" itemprop="mainContentOfPage">

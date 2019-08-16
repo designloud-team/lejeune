@@ -14,7 +14,7 @@ class Report extends Model
     protected $fillable = [
         'is_completed',
         'tracking',
-        'carrier',
+        'courier',
         'completion_date',
         'shipping_date',
         'explanation',

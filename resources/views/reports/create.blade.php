@@ -8,10 +8,10 @@
         <div class="row">
             <!-- Display Validation Errors -->
             @include('common.errors')
-            <h3 class="box-title">Add new job details</h3>
+            <h3 class="box-title">Add new report details</h3>
             <div class="col-sm-12 fieldset">
                 {!! Form::open([
-                  'route' => 'jobs.store'
+                  'route' => 'reports.store'
                     ]) !!}
                 <div class="box box-default">
 
@@ -83,7 +83,7 @@
                             </div>
                         </div><!-- /.box-body -->
                 <div class="form-group col-md-12">
-                    {!! Form::submit('Create New Job', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('Create New Report', ['class' => 'btn btn-primary']) !!}
                 </div>
                 </div><!-- /.col-sm-12 -->
                 {!! Form::close() !!}
