@@ -179,6 +179,21 @@ class NotaryController extends Controller
                 break;
         }
     }
+    public function getNotaryJsonData($id, $type, Request $request)
+    {
+        $notary = Notary::find($id);
+        switch ($type) {
+            case 'jobs':
+                return $this->getNotaryJobDTData($notary);
+                break;
+            case 'reports':
+                return $this->getNotaryReportDTData($notary);
+                break;
+            case 'invoices':
+                return $this->getNotaryInvoiceDTData($notary);
+                break;
+        }
+    }
     protected function getNotaryDTData()
     {
 
@@ -201,6 +216,93 @@ class NotaryController extends Controller
             })
             ->addColumn('actions', function ($notary) {
                 return (string) view(' notaries.partials.actions', compact('notary'));
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
+    }
+
+
+    protected function getNotaryJobDTData($notary)
+    {
+
+        $query = $notary->jobs;
+
+
+        return DataTables::of($query)
+//            ->filterColumn(function ($query, $keyword){
+//                return $query->where('state', 'like', '%'.$keyword.'%')
+//                     ->orWhere('business_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('first_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('last_name', 'like', '%'.$keyword.'%');
+//            })
+            ->addColumn('hash_id', function ($result) {
+                return $result->hash_id;
+            })
+            ->editColumn('date', function ($job) {
+                return date('l F jS, Y g:i A',strtotime($job->date . $job->time));
+            })
+            ->editColumn('status', function ($job) {
+                if($job->status == 'new') {return 'New';}
+                if($job->status == 'completed_w_issues') {return 'Completed With Issues';}
+                if($job->status == 'completed') {return 'Completed';}
+                if($job->status == 'not_completed') {return 'Not Completed';}
+                return $job->status;
+            })
+            ->addColumn('actions', function ($job) {
+                return (string) view(' jobs.partials.actions', compact('job'));
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
+    }
+    protected function getNotaryInvoiceDTData($notary)
+    {
+
+        $query = $notary->invoices;
+
+
+        return DataTables::of($query)
+//            ->filterColumn(function ($query, $keyword){
+//                return $query->where('state', 'like', '%'.$keyword.'%')
+//                     ->orWhere('business_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('first_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('last_name', 'like', '%'.$keyword.'%');
+//            })
+            ->addColumn('hash_id', function ($result) {
+                return $result->hash_id;
+            })
+
+            ->addColumn('actions', function ($invoice) {
+                return (string) view(' invoices.partials.actions', compact('invoice'));
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
+    }
+    protected function getNotaryReportDTData($notary)
+    {
+
+        $query = $notary->reports;
+
+
+        return DataTables::of($query)
+//            ->filterColumn(function ($query, $keyword){
+//                return $query->where('state', 'like', '%'.$keyword.'%')
+//                     ->orWhere('business_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('first_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('last_name', 'like', '%'.$keyword.'%');
+//            })
+            ->addColumn('hash_id', function ($result) {
+                return $result->hash_id;
+            })
+            ->editColumn('is_completed', function ($report) {
+                return $report->is_completed ? 'yes' : 'no';
+
+            })
+            ->editColumn('completion_date', function ($report) {
+                return convert_to_date($report->completion_date);
+
+            })
+            ->addColumn('actions', function ($report) {
+                return (string) view(' reports.partials.actions', compact('report'));
             })
             ->rawColumns(['actions'])
             ->make(true);

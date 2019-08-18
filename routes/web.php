@@ -65,7 +65,9 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::post( '/importExcel', ['as'=>'customers.importExcel', 'uses'=>'CustomerController@importExcel'] );
         Route::get( '/data/{type}', ['as'=>'customers.data', 'uses'=>'CustomerController@getDatatablesData'] );
 //        Route::get( '/data/{delete}', ['as'=>'customers.destroy-all', 'uses'=>'CustomerController@getDatatablesData'] );
-
+        Route::group( ['prefix' => 'datatables'], function() {
+            Route::get( '/data/{id}/{type}', ['as'=>'customers.json', 'uses'=>'CustomerController@getCustomerJsonData']);
+        });
     });
 
     Route::group( ['prefix' => 'notaries'], function() {
@@ -81,7 +83,9 @@ Route::group(array('middleware'=> 'auth'), function (){
             Route::get( '/downloadExcel/{type}', ['as'=>'notaries.downloadExcel', 'uses'=>'NotaryController@downloadExcel'] );
             Route::post( '/importExcel', ['as'=>'notaries.importExcel', 'uses'=>'NotaryController@importExcel'] );
             Route::get( '/data/{type}', ['as'=>'notaries.data', 'uses'=>'NotaryController@getDatatablesData'] );
-
+        Route::group( ['prefix' => 'datatables'], function() {
+            Route::get( '/data/{id}/{type}', ['as'=>'notaries.json', 'uses'=>'NotaryController@getNotaryJsonData']);
+        });
 //            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
     });
 
@@ -113,7 +117,9 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::get( '/downloadExcel/{type}', ['as'=>'jobs.downloadExcel', 'uses'=>'JobController@downloadExcel'] );
         Route::post( '/importExcel', ['as'=>'jobs.importExcel', 'uses'=>'JobController@importExcel'] );
         Route::get( '/data/{type}', ['as'=>'jobs.data', 'uses'=>'JobController@getDatatablesData'] );
-
+        Route::group( ['prefix' => 'datatables'], function() {
+            Route::get( '/data/{id}/{type}', ['as'=>'jobs.json', 'uses'=>'JobController@getJobJsonData']);
+        });
 //            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
     });
     Route::group( ['prefix' => 'reports'], function() {
@@ -129,8 +135,9 @@ Route::group(array('middleware'=> 'auth'), function (){
         Route::get( '/downloadExcel/{type}', ['as'=>'reports.downloadExcel', 'uses'=>'ReportController@downloadExcel'] );
         Route::post( '/importExcel', ['as'=>'reports.importExcel', 'uses'=>'ReportController@importExcel'] );
         Route::get( '/data/{type}', ['as'=>'reports.data', 'uses'=>'ReportController@getDatatablesData'] );
-
-//            Route::get( '/data/{delete}', ['as'=>'notaries.destroy-all', 'uses'=>'NotaryController@getDatatablesData'] );
+        Route::group( ['prefix' => 'datatables'], function() {
+            Route::get( '/data/{id}/{type}', ['as'=>'reports.json', 'uses'=>'ReportController@getReportJsonData']);
+        });
     });
 
 });
