@@ -1,5 +1,11 @@
 @extends('admin_template')
-
+<style>
+    .hr {
+        width:100%;
+        height: 1px;
+        background:#666;
+    }
+</style>
 @section('breadcrumbs')
     {!! Breadcrumbs::render() !!}
 @stop
@@ -45,12 +51,12 @@
                                     {!! Form::text('evening_phone',null,['class' => 'form-control','placeholder'=> 'Evening phone number']); !!}
                                 </div>
                                 <div class="clearfix"></div>
-
-                                <div class="form-group col-md-8">
+                                <hr class="hr">
+                                <div class="form-group col-md-6">
                                     {!! Form::label('property_address', 'Property Address:', ['class' => 'control-label'])  !!}
                                     {!! Form::text('property_address',null,['class' => 'form-control','placeholder'=> 'Property Address', 'required']); !!}
                                 </div>
-                                <div class="form-group col-md-8">
+                                <div class="form-group col-md-6">
                                     {!! Form::label('signing_address', 'Location of Signing:', ['class' => 'control-label'])  !!}
                                     {!! Form::text('signing_address',null,['class' => 'form-control','placeholder'=> 'Signing Address', 'required']); !!}
                                 </div>
@@ -68,17 +74,20 @@
                                     {!! Form::label('packages', 'No. of Packages:', ['class' => 'control-label'])  !!}
                                     {!! Form::number('packages',1,['class' => 'form-control','placeholder'=> '1-100', 'min'=> '1', 'max'=> '100','required']); !!}
                                 </div>
-                                <div class="form-group col-md-6">
+                                <hr class="hr">
+
+                                <div class="form-group col-md-4">
                                     {!! Form::label('notary_id', 'Notary:', ['class' => 'control-label']) !!}
-                                    {!! Form::select('notary_id', ['Select Notary' => $notaries, 'new-notary' => 'New Notary'], null,['class' => 'form-control selectpicker', 'required', 'placeholder' => 'Select existing notary']) !!}
+                                    {!! Form::select('notary_id', ['Select Notary' => $notaries, 'new-notary' => 'New Notary'], null,['class' => 'form-control selectpicker', 'required', 'placeholder' => 'Select existing notary', 'id' => 'notary']) !!}
                                 </div>
-                                <div class="form-group col-md-6">
+
+                                <div class="form-group col-md-4">
                                     {!! Form::label('notary_fee', 'Notary Fee:', ['class' => 'control-label']) !!}
-                                    {!! Form::text('notary_fee',null,['class' => 'form-control','placeholder'=> 'Notary Fee', 'required']); !!}
+                                    {!! Form::text('notary_fee',null,['class' => 'form-control','placeholder'=> 'Fee for job    ']); !!}
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     {!! Form::label('customer_id', 'Customer: (Optional)', ['class' => 'control-label']) !!}
-                                    {!! Form::select('customer_id', ['Customers' => $customers, 'new-customer' => 'New Customer'], null,['class' => 'form-control selectpicker', 'placeholder' => 'Select existing customer' ]) !!}
+                                    {!! Form::select('customer_id', ['Customers' => $customers, 'new-customer' => 'New Customer'], null,['class' => 'form-control selectpicker', 'placeholder' => 'Select existing customer', 'id' => 'customer' ]) !!}
                                 </div>
                             </div>
                         </div><!-- /.box-body -->
@@ -95,6 +104,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-
+        $("#notary").change(function () {
+            if($(this).val() == 'new-notary') {
+                alert('notary')
+            }
+        })
+        $("#customer").change(function () {
+            if($(this).val() == 'new-customer') {
+                alert('customer')
+            }
+        })
     })
 </script>

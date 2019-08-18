@@ -89,16 +89,10 @@ class JobController extends Controller
         $job = Job::create($data);
 
         $report = Report::create([
-            'is_completed' => 0,
-            'tracking' => null,
-            'courier'  => null,
-            'completion_date'  => null,
-            'shipping_date'  => null,
-            'explanation'  => null,
+            'job_id'  => $job->id,
             'customer_id'  => $data['customer_id']?$data['customer_id']: null,
             'notary_id'  => $data['notary_id']?$data['notary_id']:null,
-            'job_id'  => $job->id,
-            'user_id'
+            'user_id' => Auth::user()->id
         ]);
 //        $job = Job::create([
 //            'borrower' => $data['borrower'],

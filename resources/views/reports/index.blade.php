@@ -105,9 +105,8 @@
                             <tr>
                                 <th></th>
                                 <th>Job</th>
-                                <th></th>
-                                <th>Date</th>
                                 <th>Status</th>
+                                <th>Completion/Report Date</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

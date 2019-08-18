@@ -8,6 +8,9 @@
 
 if(!function_exists('convert_to_date')) {
     function convert_to_date($date, $format = null){
+        if(!isset($date) || strlen($date)==0) {
+            return '';
+        }
         if($format == null){
             $format = 'F jS, Y g:i A';
         }

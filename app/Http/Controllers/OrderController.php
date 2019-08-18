@@ -43,12 +43,6 @@ class OrderController extends Controller
     {
         //
 
-        $customer = Customer::find($id);
-        $data = $request->all();
-
-        $customer->update($data);
-
-        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -186,6 +180,9 @@ class OrderController extends Controller
 //            })
             ->addColumn('hash_id', function ($result) {
                 return $result->hash_id;
+            })
+            ->editColumn('is_new', function ($result) {
+                return $result->is_new? 'Yes': 'No';
             })
             ->addColumn('actions', function ($order) {
                 return (string) view(' orders.partials.actions', compact('order'));

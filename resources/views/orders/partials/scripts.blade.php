@@ -53,6 +53,7 @@ jQuery(document).ready(function($){
             { data: 'id', name: 'Order ID' },
             { data: 'name', name: 'Name' },
             { data: 'company', name: 'Company' },
+            { data: 'is_new', name: 'New Order' },
             { data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
         ],
         columnDefs: [

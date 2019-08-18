@@ -157,11 +157,21 @@ class ReportController extends Controller
 
         $query = Report::all();
         return DataTables::of($query)
-
             ->addColumn('hash_id', function ($result) {
                 return $result->hash_id;
             })
-
+            ->addColumn('job', function ($report) {
+                return Job::find($report->job_id)->registered_id;
+            })
+            ->editColumn('status', function ($result) {
+                if(!isset($result->is_completed) || $result->is_completed == 0 ) {return 'Not Completed';}
+                if( $result->is_completed == 1 ) {return 'Completed';}
+                if($result->is_completed == 2 ) {return 'Completed with Issues';}
+                return $result->status;
+            })
+            ->editColumn('completion_date', function ($result) {
+                return convert_to_date($result->completion_date);
+            })
             ->addColumn('actions', function ($report) {
                 return (string) view(' reports.partials.actions', compact('report'));
             })
@@ -174,11 +184,22 @@ class ReportController extends Controller
         $query = Report::all();
 
         return DataTables::of($query)
-
             ->addColumn('hash_id', function ($result) {
                 return $result->hash_id;
             })
-
+            ->addColumn('job', function ($report) {
+                return Job::find($report->job_id)->registered_id;
+            })
+            ->editColumn('status', function ($result) {
+                if(!isset($result->is_completed)) {return 'Not Completed';}
+                if(isset($result->is_completed) && $result->is_completed === 1  ) {return 'Not Completed';}
+                if( $result->is_completed === 1 ) {return 'Completed';}
+                if($result->is_completed === 2 ) {return 'Completed with Issues';}
+                return $result->status;
+            })
+            ->editColumn('completion_date', function ($result) {
+                return convert_to_date($result->completion_date);
+            })
             ->addColumn('actions', function ($report) {
                 return (string) view(' reports.partials.actions', compact('report'));
             })

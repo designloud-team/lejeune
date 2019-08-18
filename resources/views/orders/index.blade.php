@@ -106,6 +106,7 @@
                                 <th>Order ID</th>
                                 <th>Name</th>
                                 <th>Company</th>
+                                <th>New</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

@@ -1,5 +1,11 @@
 @extends('admin_template')
-
+<style>
+    .hr {
+        width:100%;
+        height: 1px;
+        background:#666;
+    }
+</style>
 @section('breadcrumbs')
     {!! Breadcrumbs::render() !!}
 @stop
@@ -29,6 +35,20 @@
                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
                         </div>
 
+
+                        <div class="form-group col-md-6">
+                            {!! Form::label('display_name', 'Display Name:', ['class' => 'control-label']) !!}
+                            {!! Form::text('display_name', null, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group col-md-3" style="padding-top: 30px">
+                            <label>
+                                {!! Form::checkbox('use_display_name', 0, null, ['class' => 'form-control']) !!}  Use Display name?
+                            </label>
+
+                        </div>
+
+                        <hr class="hr">
+
                         <div class="form-group col-md-6">
                             {!! Form::label('phone_number', 'Phone number: *', ['class' => 'control-label']) !!}
                             {!! Form::text('phone_number', null, ['class' => 'form-control', 'required']) !!}
@@ -46,28 +66,20 @@
                             {!! Form::label('website', 'Website:', ['class' => 'control-label']) !!}
                             {!! Form::text('website', null, ['class' => 'form-control']) !!}
                         </div>
+
+                        <hr class="hr">
+
                         <div class="form-group col-md-6">
-                            {!! Form::label('display_name', 'Display Name:', ['class' => 'control-label']) !!}
-                            {!! Form::text('display_name', null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group col-md-3" style="padding-top: 30px">
-                            <label>
-                                {!! Form::checkbox('use_display_name', 0, null, ['class' => 'form-control']) !!}  Use Display name?
-                            </label>
-
-                        </div>
-
-                        <div class="form-group col-md-12">
                             {!! Form::label('shipping_address', 'Shipping Address:', ['class' => 'control-label']) !!}
                             {!! Form::text('shipping_address', null, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {!! Form::label('billing_address', 'Billing Address:', ['class' => 'control-label']) !!}
+                            {!! Form::text('billing_address', null, ['class' => 'form-control', 'id'=> 'billing_address', 'required']) !!}
                         </div>
                         <div class="form-group col-md-12">
                             {!! Form::checkbox('same_as_shipping', 0, null, ['class' => 'form-control', 'id' => 'same_as_shipping']) !!}
                             {!! Form::label('same_as_shipping', 'Billing same as Shipping address?', ['class' => 'control-label', 'id'=> 'shipping_address', 'required']) !!}
-                        </div>
-                        <div class="form-group col-md-12">
-                            {!! Form::label('billing_address', 'Billing Address:', ['class' => 'control-label']) !!}
-                            {!! Form::text('billing_address', null, ['class' => 'form-control', 'id'=> 'billing_address', 'required']) !!}
                         </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->

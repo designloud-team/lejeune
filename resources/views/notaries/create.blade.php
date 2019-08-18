@@ -1,5 +1,11 @@
 @extends('admin_template')
-
+<style>
+    .hr {
+        width:100%;
+        height: 1px;
+        background:#666;
+    }
+</style>
 @section('breadcrumbs')
     {!! Breadcrumbs::render() !!}
 @stop
@@ -42,19 +48,7 @@
                                     {!! Form::label('business_name', 'Business name:', ['class' => 'control-label']) !!}
                                     {!! Form::text('business_name', null, ['class' => 'form-control']) !!}
                                 </div>
-
-                                <div class="form-group col-md-12">
-                                    {!! Form::label('mailing_address', 'Mailing Address:', ['class' => 'control-label']) !!}
-                                    {!! Form::text('mailing_address', null, ['class' => 'form-control', 'required',  'id' => 'mailing_address']) !!}
-                                </div>
-                                <div class="form-group col-md-12">
-                                    {!! Form::checkbox('same_as_mailing', 0, null, ['class' => 'form-control', 'id' => 'same_as_mailing']) !!}
-                                    {!! Form::label('same_as_mailing', 'Delivery same as Mailing address?', ['class' => 'control-label']) !!}
-                                </div>
-                                <div class="form-group col-md-12">
-                                    {!! Form::label('delivery_address', 'Delivery Address:', ['class' => 'control-label']) !!}
-                                    {!! Form::text('delivery_address', null, ['class' => 'form-control', 'id' => 'delivery_address' ]) !!}
-                                </div>
+                                <hr class="hr">
                                 <div class="form-group col-md-6">
                                     {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
                                     {!! Form::text('email', null, ['class' => 'form-control', 'required']) !!}
@@ -74,9 +68,28 @@
                                     {!! Form::label('website', 'Website:', ['class' => 'control-label']) !!}
                                     {!! Form::text('website', null, ['class' => 'form-control']) !!}
                                 </div>
+                                <hr class="hr">
+
+
+                                <div class="form-group col-md-6">
+                                    {!! Form::label('mailing_address', 'Mailing Address:', ['class' => 'control-label']) !!}
+                                    {!! Form::text('mailing_address', null, ['class' => 'form-control', 'required',  'id' => 'mailing_address']) !!}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {!! Form::label('delivery_address', 'Delivery Address:', ['class' => 'control-label']) !!}
+                                    {!! Form::text('delivery_address', null, ['class' => 'form-control', 'id' => 'delivery_address' ]) !!}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    {!! Form::checkbox('same_as_mailing', 0, null, ['class' => 'form-control', 'id' => 'same_as_mailing']) !!}
+                                    {!! Form::label('same_as_mailing', 'Delivery same as Mailing address?', ['class' => 'control-label']) !!}
+                                </div>
+
+                                <hr class="hr">
+
+
                                 <div class="form-group col-md-12" style="">
                                     <label>
-                                        {!! Form::checkbox('e_docs', null, ['class' => 'form-control']) !!}  Do you use E Docs?
+                                        {!! Form::checkbox('e_docs', 0, null,['class' => 'form-control']) !!}  Do you use E Docs?
                                     </label>
                                 </div>
                                 <div class="form-group col-md-12" style="">
@@ -88,6 +101,7 @@
                                     {!! Form::label('insurance_amount', 'Insurance Amount:', ['class' => 'control-label']) !!}
                                     {!! Form::text('insurance_amount', null, ['class' => 'form-control']) !!}
                                 </div>
+
                                 <div class="form-group col-md-6">
                                     {!! Form::label('ssn_or_ein', 'SSN or EIN:', ['class' => 'control-label']) !!}
                                     {!! Form::text('ssn_or_ein', null, ['class' => 'form-control']) !!}

@@ -50,9 +50,9 @@ jQuery(document).ready(function($){
                 defaultContent: '',
                 orderable: false
             },
-            { data: 'job_id', name: 'job_id' },
-            { data: 'completion_date', name: 'completion_date' },
+            { data: 'job', name: 'Job' },
             { data: 'status', name: 'status' },
+            { data: 'completion_date', name: 'completion date' },
             { data: 'actions', name: 'actions', searchable: "false", orderable: "false", width: "20%"}
         ],
         columnDefs: [

@@ -56,6 +56,18 @@
                             <p><strong>Tracking: </strong>{{ $report->tracking }}</p>
                             <p><strong>Courier: </strong>{{ $report->courier }}</p>
                             <p><strong>Packages: </strong>{{ $job->packages }}</p>
+                            @if(!isset($report->is_completed))
+                                <p><strong>Status: </strong>Newly Scheduled</p>
+                            @elseif($report->is_completed === 0)
+                                <p><strong>Status: </strong>Not Completed</p>
+                                <p><strong>Explanation: </strong>{{ $report->explanation }}</p>
+                            @elseif($report->is_completed === 1)
+                                <p><strong>Status: </strong>Completed</p>
+                            @elseif($report->is_completed === 2)
+                                <p><strong>Status: </strong>Completed With Issues</p>
+                                <p><strong>Explanation: </strong>{{ $report->explanation }}</p>
+                            @endif
+
                         </div>
                     </div>
                 </div>
