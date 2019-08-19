@@ -79,10 +79,6 @@ class JobController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'email' => ['unique:jobs'],
-        ]);
-
         $data = $request->all();
 
 
@@ -94,30 +90,8 @@ class JobController extends Controller
             'notary_id'  => $data['notary_id']?$data['notary_id']:null,
             'user_id' => Auth::user()->id
         ]);
-//        $job = Job::create([
-//            'borrower' => $data['borrower'],
-//            'coborrower' => $data['coborrower'],
-//            'daytime_phone' => $data['daytime_phone'],
-//            'evening_phone' => $data['evening_phone'],
-//            'signing_address' => $data['signing_address'],
-//            'property_address' => $data['property_address'],
-//            'date' => $data['date'],
-//            'time' => $data['time'],
-//            'packages' => $data['packages'],
-//            'local' => $data['local'],
-//            'notary_fee' => $data['notary_fee'],
-////            'status' => 'new',
-//            'notary_id' => $data['notary_id'],
-//            'customer_id' => $data['customer_id'],
-//            'user_id' => Auth::user()->id,
-//
-//        ]);
 
-        $notaries = $job->notaries;
-        $invoices = $job->invoices;
-        $reports = $job->reports;
-
-        return view('jobs.show', compact('job','notaries', 'invoices', 'reports'));
+        return view('jobs.show', compact('job'));
     }
 
     /**
@@ -131,11 +105,7 @@ class JobController extends Controller
         //
         $job = Job::find($id);
 
-        $notaries = $job->notaries;
-        $invoices = $job->invoices;
-        $reports = $job->reports;
-
-        return view('jobs.show', compact('job','notaries', 'invoices', 'reports'));
+        return view('jobs.show', compact('job'));
     }
 
     /**
@@ -148,12 +118,11 @@ class JobController extends Controller
     {
         //
         $job = Job::find($id);
-        $invoices = $job->invoices;
-        $reports = $job->reports;
+
         $customers = Customer::all()->pluck('name', 'id');
         $notaries = Notary::all()->pluck('full_name', 'id');
 
-        return view('jobs.edit', compact('job','notaries', 'invoices', 'reports'), [
+        return view('jobs.edit', compact('job'), [
             'page_title' => 'Jobs',
             'page_description' => 'Edit Job',
             'customers' => $customers,
@@ -177,11 +146,7 @@ class JobController extends Controller
 
         $job->update($data);
 
-        $notaries = $job->notaries;
-        $invoices = $job->invoices;
-        $reports = $job->reports;
-
-        return view('jobs.show', compact('job','notaries', 'invoices', 'reports'));
+        return view('jobs.show', compact('job'));
     }
 
     /**
@@ -228,7 +193,7 @@ class JobController extends Controller
     protected function getJobDTData()
     {
 
-        $query = Job::whereNotIn('status', ['completed', 'completed_w_issues'])->get();
+        $query = Job::where('status', 'new')->get();
 //        $query = Job::all();
         return DataTables::of($query)
 

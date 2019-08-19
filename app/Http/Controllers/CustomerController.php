@@ -201,6 +201,109 @@ class CustomerController extends Controller
             ->rawColumns(['actions'])
             ->make(true);
     }
+
+    public function getCustomerJsonData($id, $type, Request $request)
+    {
+        $customer = Customer::find($id);
+        switch ($type) {
+            case 'jobs':
+                return $this->getCustomerJobDTData($customer);
+                break;
+            case 'reports':
+                return $this->getCustomerReportDTData($customer);
+                break;
+            case 'invoices':
+                return $this->getCustomerInvoiceDTData($customer);
+                break;
+        }
+    }
+
+
+    protected function getCustomerJobDTData($customer)
+    {
+
+        $query = $customer->jobs;
+
+
+        return DataTables::of($query)
+//            ->filterColumn(function ($query, $keyword){
+//                return $query->where('state', 'like', '%'.$keyword.'%')
+//                     ->orWhere('business_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('first_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('last_name', 'like', '%'.$keyword.'%');
+//            })
+            ->addColumn('hash_id', function ($result) {
+                return $result->hash_id;
+            })
+            ->editColumn('date', function ($job) {
+                return date('l F jS, Y g:i A',strtotime($job->date . $job->time));
+            })
+            ->editColumn('status', function ($job) {
+                if($job->status == 'new') {return 'New';}
+                if($job->status == 'completed_w_issues') {return 'Completed With Issues';}
+                if($job->status == 'completed') {return 'Completed';}
+                if($job->status == 'not_completed') {return 'Not Completed';}
+                return $job->status;
+            })
+            ->addColumn('actions', function ($job) {
+                return (string) view(' jobs.partials.actions', compact('job'));
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
+    }
+    protected function getCustomerInvoiceDTData($customer)
+    {
+
+        $query = $customer->invoices;
+
+
+        return DataTables::of($query)
+//            ->filterColumn(function ($query, $keyword){
+//                return $query->where('state', 'like', '%'.$keyword.'%')
+//                     ->orWhere('business_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('first_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('last_name', 'like', '%'.$keyword.'%');
+//            })
+            ->addColumn('hash_id', function ($result) {
+                return $result->hash_id;
+            })
+
+            ->addColumn('actions', function ($invoice) {
+                return (string) view(' invoices.partials.actions', compact('invoice'));
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
+    }
+    protected function getCustomerReportDTData($customer)
+    {
+
+        $query = $customer->reports;
+
+
+        return DataTables::of($query)
+//            ->filterColumn(function ($query, $keyword){
+//                return $query->where('state', 'like', '%'.$keyword.'%')
+//                     ->orWhere('business_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('first_name', 'like', '%'.$keyword.'%')
+//                    ->orWhere('last_name', 'like', '%'.$keyword.'%');
+//            })
+            ->addColumn('hash_id', function ($result) {
+                return $result->hash_id;
+            })
+            ->editColumn('is_completed', function ($report) {
+                return $report->is_completed ? 'yes' : 'no';
+
+            })
+            ->editColumn('completion_date', function ($report) {
+                return !is_null($report->completion_date)? convert_to_date($report->completion_date): 'Not Started';
+
+            })
+            ->addColumn('actions', function ($report) {
+                return (string) view(' reports.partials.actions', compact('report'));
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
+    }
     /**
      * File Export Code
      *

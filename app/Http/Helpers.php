@@ -8,6 +8,7 @@
 
 if(!function_exists('convert_to_date')) {
     function convert_to_date($date, $format = null){
+//        return dd($date);
         if(!isset($date) || strlen($date)==0) {
             return '';
         }

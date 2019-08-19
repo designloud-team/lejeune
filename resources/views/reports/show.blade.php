@@ -51,12 +51,12 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body pad">
-                            <p><strong>Completion Date </strong><a id="completion_date" >{{ date('l F jS, Y', strtotime($report->completion_date)) }}</a></p>
-                            <p><strong>Shipping Date </strong><a id="shipping_date" >{{ date('l F jS, Y', strtotime($report->shipping_date)) }}</a></p>
+                            <p><strong>Completion Date </strong><a id="completion_date" >{{ !is_null($report->completion_date)?date('l F jS, Y', strtotime($report->completion_date)):'Not started' }}</a></p>
+                            <p><strong>Shipping Date </strong><a id="shipping_date" >{{ !is_null($report->shipping_date)?date('l F jS, Y', strtotime($report->shipping_date)):'Not started' }}</a></p>
                             <p><strong>Tracking: </strong>{{ $report->tracking }}</p>
                             <p><strong>Courier: </strong>{{ $report->courier }}</p>
                             <p><strong>Packages: </strong>{{ $job->packages }}</p>
-                            @if(!isset($report->is_completed))
+                            @if(is_null($report->is_completed))
                                 <p><strong>Status: </strong>Newly Scheduled</p>
                             @elseif($report->is_completed === 0)
                                 <p><strong>Status: </strong>Not Completed</p>

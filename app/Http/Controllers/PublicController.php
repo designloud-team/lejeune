@@ -65,25 +65,49 @@ class PublicController extends Controller
     public function findNotaryByLast(Request $request)
     {
 
-        $job = Job::where('registered_id', '=',$request->job)->value('id');
-        $report = Report::where('job_id', '=',$job)->first();
-        if ($report ) {
-            return view('report', compact('report'), ['job' => Job::find($job)]);
-        } else {
-            return back()->with('error' , 'No Report Found');
 
+            $job = Job::where('registered_id', '=',$request->job)->value('id');
+        $report = Report::where('job_id', '=',$job)->first();
+
+        if(!isset($report->is_completed) && $report->completed == null) {
+
+            if ($report) {
+                return view('report', compact('report'), ['job' => Job::find($job)]);
+            } else {
+                return back()->with('error', 'No Report Found');
+
+            }
+        } else {
+            return back()->with('error', 'A report has been submitted');
         }
+
 
     }
     public function submitReport(Request $request)
     {
         $report = Report::where('job_id', '=',$request->job)->first();
 
-        $data =$request->all();
+            $data =$request->all();
 
-        $report->update($data);
+            $report->update($data);
 
-        return view('thanks');
+            $job = Job::find($request->job);
+
+            switch ($report->is_completed) {
+                case 0:
+                    $job->update(['status' => 'not_completed']);
+                    break;
+                case 1:
+                    $job->update(['status' => 'completed']);
+                    break;
+                case 2:
+                    $job->update(['status' => 'completed_w_issues']);
+                    break;
+                default:
+                    break;
+
+            }
+            return view('thanks');
 
     }
 

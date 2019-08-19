@@ -43,8 +43,8 @@ class NewCompletedReport extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line('New Report Submitted.')
+                    ->action('View Report', url('/reports/'. $this->report->id))
                     ->line('Thank you for using our application!');
     }
 

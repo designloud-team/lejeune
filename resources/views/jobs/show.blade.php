@@ -17,7 +17,7 @@
                     <div class="pull-right btn-group">
                         <a href="/jobs/{{ $job->id }}/edit" class="btn btn-danger">Edit</a>
                         <a href="/jobs/{{ $job->id }}/pdf" class="btn btn-danger">Print</a>
-                        <a href="#" class="btn btn-danger">Convert Job</a>
+                        <a href="/reports/{{\App\Report::where('job_id',$job->id)->value('id')}}" class="btn btn-danger">View Report</a>
                         <a href="/jobs" class="btn btn-danger">All Jobs</a>
                     </div>
                 </div>
@@ -64,7 +64,6 @@
                         <div class="box-body pad">
                             <p><strong>Job Registered ID: </strong>{{ $job->registered_id }}</p>
                             <p><strong>Status: </strong>{{ $job->status }}</p>
-                            <p><strong>Report: </strong><a href="/reports/{{\App\Report::where('job_id',$job->id)->value('id')}}">View Report</a></p>
                         @if($job->customer_id)
                                 <p><strong>Customer: </strong><a href="/customers/{{$job->customer_id}}">{{ \App\Customer::find($job->customer_id)->name }} {{ \App\Customer::find($job->customer_id)->company }}</a></p>
                             @endif

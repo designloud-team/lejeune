@@ -53,11 +53,9 @@ class ReportController extends Controller
     {
         //
         $report = Report::find($id);
-
-        $notary = Notary::find($report->notary_id);
-        $invoices = $report->invoices;
-        $customer = Customer::find($report->customer_id);
         $job = Job::find($report->job_id);
+        $notary = Notary::find($report->notary_id);
+        $customer = Customer::find($report->customer_id);
 
         return view('reports.show', compact('report','notary', 'invoices', 'job', 'customer'));
     }
@@ -100,6 +98,23 @@ class ReportController extends Controller
         $report = Report::find($id);
 
         $report->update($data);
+
+        $job = Job::find($report->job_id);
+
+        switch ($report->is_completed) {
+            case 0:
+                $job->update(['status' => 'not_completed']);
+                break;
+            case 1:
+                $job->update(['status' => 'completed']);
+                break;
+            case 2:
+                $job->update(['status' => 'completed_w_issues']);
+                break;
+            default:
+                break;
+
+        }
 
         $notaries = $report->notaries;
         $invoices = $report->invoices;
@@ -169,8 +184,8 @@ class ReportController extends Controller
                 if($result->is_completed == 2 ) {return 'Completed with Issues';}
                 return $result->status;
             })
-            ->editColumn('completion_date', function ($result) {
-                return convert_to_date($result->completion_date);
+            ->editColumn('completion_date', function ($report) {
+                return !is_null($report->completion_date)? convert_to_date($report->completion_date): 'Not Started';
             })
             ->addColumn('actions', function ($report) {
                 return (string) view(' reports.partials.actions', compact('report'));
@@ -191,14 +206,15 @@ class ReportController extends Controller
                 return Job::find($report->job_id)->registered_id;
             })
             ->editColumn('status', function ($result) {
-                if(!isset($result->is_completed)) {return 'Not Completed';}
+                if(!isset($result->is_completed)) {return 'Newly Scheduled';}
                 if(isset($result->is_completed) && $result->is_completed === 1  ) {return 'Not Completed';}
                 if( $result->is_completed === 1 ) {return 'Completed';}
                 if($result->is_completed === 2 ) {return 'Completed with Issues';}
+
                 return $result->status;
             })
-            ->editColumn('completion_date', function ($result) {
-                return convert_to_date($result->completion_date);
+            ->editColumn('completion_date', function ($report) {
+                return !is_null($report->completion_date)? convert_to_date($report->completion_date): 'Not Started';
             })
             ->addColumn('actions', function ($report) {
                 return (string) view(' reports.partials.actions', compact('report'));

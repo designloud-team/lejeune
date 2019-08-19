@@ -294,11 +294,11 @@ class NotaryController extends Controller
                 return $result->hash_id;
             })
             ->editColumn('is_completed', function ($report) {
-                return $report->is_completed ? 'yes' : 'no';
+                return $report->is_completed ? 'yes' : 'Not Started';
 
             })
             ->editColumn('completion_date', function ($report) {
-                return convert_to_date($report->completion_date);
+                return !is_null($report->completion_date)? convert_to_date($report->completion_date): 'Not Started';
 
             })
             ->addColumn('actions', function ($report) {
