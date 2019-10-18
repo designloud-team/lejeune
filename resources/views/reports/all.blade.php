@@ -119,4 +119,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
 @include('reports.partials.allscripts')
+@endpush

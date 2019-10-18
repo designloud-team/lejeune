@@ -117,4 +117,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
 @include('notaries.partials.scripts')
+@endpush

@@ -119,4 +119,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
 @include('jobs.partials.scripts')
+    @endpush

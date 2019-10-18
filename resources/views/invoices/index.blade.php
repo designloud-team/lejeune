@@ -123,5 +123,6 @@ table.dataTable thead .sorting:after , table.dataTable thead .sorting_asc:after,
         
 
 @endsection
-
+@push('scripts')
 @include('items.partials.scripts')
+@endpush

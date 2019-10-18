@@ -22,4 +22,6 @@
     </div>
 
 @endsection
+@push('scripts')
 @include('customers.partials.scripts')
+@endpush

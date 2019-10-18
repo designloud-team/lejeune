@@ -118,4 +118,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
 @include('orders.partials.scripts')
+    @endpush

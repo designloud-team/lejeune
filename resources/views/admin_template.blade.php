@@ -116,7 +116,6 @@
 </div>
 
 <!-- ./wrapper -->
-@push('scripts')
-@endpush
+@stack('scripts')
 
 @include('html_footer')
